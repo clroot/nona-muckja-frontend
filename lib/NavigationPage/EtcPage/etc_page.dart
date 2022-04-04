@@ -1,13 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:nonamukja/NavigationPage/EtcPage/AdditionPage/regional_auth_page.dart';
 import 'AdditionPage/notice_page.dart';
 import 'AdditionPage/service_page.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
-import 'AdditionPage/lately_page.dart';
-import 'AdditionPage/favorites_page.dart';
+import 'AdditionPage/regional_settings_page.dart';
 
-class Etc_Page extends StatelessWidget {
+class Profile_Page extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,7 +62,7 @@ class _buildProfile extends StatelessWidget {
               child: ListTile(
                 onTap: () => pushNewScreen(
                     context,
-                    screen: Lately_Page(),
+                    screen: Regional_Settings_Page(),
                     withNavBar: false
                 ),
                 leading: Icon(CupertinoIcons.location),
@@ -77,7 +77,7 @@ class _buildProfile extends StatelessWidget {
               child: ListTile(
                 onTap: () => pushNewScreen(
                     context,
-                    screen: Favorites_Page(),
+                    screen: Regional_Auth_Page(),
                     withNavBar: false
                 ),
                   leading: Icon(CupertinoIcons.check_mark_circled),

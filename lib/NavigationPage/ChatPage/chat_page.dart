@@ -13,7 +13,7 @@ class Chat_Page extends StatelessWidget {
           elevation: 0,
           centerTitle: false,
           title: Text(
-            '피드',
+            '채팅',
             style: TextStyle(color: Colors.black),
           ),
           actions: <Widget>[
@@ -66,28 +66,7 @@ class Chat_Container extends StatelessWidget {
             },
           ),
           subtitle: Text("TEST Subtitle"),
-          trailing: const Icon(Icons.more_vert),
-        ),
-        //피드 이미지 공간
-        GestureDetector(
-            child: Stack(
-          alignment: Alignment.center,
-          children: <Widget>[
-            SizedBox(
-              height: 400,
-              width: 400,
-              child: Text("Image"),
-            ),
-          ],
-        )),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            Padding(padding: const EdgeInsets.only(left: 20.0, top: 40.0)),
-            GestureDetector(
-              child: Icon(CupertinoIcons.heart, size: 25.0, color: Colors.pink),
-            )
-          ],
+
         )
       ],
     ));

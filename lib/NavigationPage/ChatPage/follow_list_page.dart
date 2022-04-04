@@ -16,7 +16,7 @@ class Follow_List extends StatelessWidget{
           elevation:  0,
           centerTitle: false,
           title : Text(
-            '팔로우 리스트',
+            'Test',
             style:  TextStyle(color: Colors.black),
           ),
           backgroundColor: Colors.white,
