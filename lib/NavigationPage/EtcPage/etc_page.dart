@@ -41,11 +41,13 @@ class _buildProfile extends StatelessWidget {
               child: ListTile(
                 leading: CircleAvatar(
                   radius: 25,
+
                   backgroundImage: null,
-                  backgroundColor: Colors.red,
+                  backgroundColor: Colors.amberAccent,
+
                 ),
                 title: GestureDetector(
-                  child: Text('성', style: boldStyle),
+                  child: Text('User', style: boldStyle),
                   onTap: () {
                     print('TEST Tapped');
                   },

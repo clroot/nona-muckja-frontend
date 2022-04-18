@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
-import 'follow_list_page.dart';
 
 class Chat_Page extends StatelessWidget {
   @override
@@ -16,14 +15,6 @@ class Chat_Page extends StatelessWidget {
             '채팅',
             style: TextStyle(color: Colors.black),
           ),
-          actions: <Widget>[
-            IconButton(
-              icon: Icon(CupertinoIcons.list_bullet),
-              padding: const EdgeInsets.only(right: 15),
-              onPressed: () => pushNewScreen(context,
-                  screen: Follow_List(), withNavBar: false),
-            )
-          ],
           backgroundColor: Colors.white,
         ),
         body: SingleChildScrollView(
@@ -31,16 +22,20 @@ class Chat_Page extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.end,
           children: <Widget>[
+            Divider(),
             Chat_Container(),
+            Divider(),
             Chat_Container(),
+            Divider(),
             Chat_Container(),
+            Divider(),
           ],
         )));
   }
 }
 
 /*
-  Feed 컨테이너
+  chat 컨테이너
  */
 class Chat_Container extends StatelessWidget {
   // 볼드 텍스트 스타일
@@ -56,16 +51,17 @@ class Chat_Container extends StatelessWidget {
         // 피드 상단바
         ListTile(
           leading: CircleAvatar(
+            radius: 23,
             backgroundImage: null,
-            backgroundColor: Colors.red,
+            backgroundColor: Colors.grey,
           ),
           title: GestureDetector(
-            child: Text('TEST', style: boldStyle),
+            child: Text('채팅방', style: boldStyle),
             onTap: () {
               print('TEST Tapped');
             },
           ),
-          subtitle: Text("TEST Subtitle"),
+          subtitle: Text("test"),
 
         )
       ],

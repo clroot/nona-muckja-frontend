@@ -3,8 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:nonamukja/NavigationPage/EtcPage/etc_page.dart';
-
-import 'package:nonamukja/NavigationPage/RecommandPage/recommand_page.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'ChatPage/chat_page.dart';
 import 'MainPage/main_page.dart';

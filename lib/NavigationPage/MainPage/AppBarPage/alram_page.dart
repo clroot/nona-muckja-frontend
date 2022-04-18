@@ -10,9 +10,9 @@ class Alram_Page extends StatelessWidget {
               color: Colors.black
           ),
           elevation: 0.0,
-          centerTitle: false,
+          centerTitle: true,
           title: Text(
-            'Test',
+            '알림',
             style: TextStyle(color: Colors.black),
           ),
           backgroundColor: Colors.white,
