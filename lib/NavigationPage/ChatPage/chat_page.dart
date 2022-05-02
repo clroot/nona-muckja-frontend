@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
 
-class Chat_Page extends StatelessWidget {
+class ChatPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,11 +23,11 @@ class Chat_Page extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: <Widget>[
             Divider(),
-            Chat_Container(),
+            ChatContainer(),
             Divider(),
-            Chat_Container(),
+            ChatContainer(),
             Divider(),
-            Chat_Container(),
+            ChatContainer(),
             Divider(),
           ],
         )));
@@ -37,7 +37,7 @@ class Chat_Page extends StatelessWidget {
 /*
   chat 컨테이너
  */
-class Chat_Container extends StatelessWidget {
+class ChatContainer extends StatelessWidget {
   // 볼드 텍스트 스타일
   TextStyle boldStyle =
       TextStyle(color: Colors.black, fontWeight: FontWeight.bold);
