@@ -6,9 +6,7 @@ class Service_Page extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          iconTheme: IconThemeData(
-              color: Colors.black
-          ),
+          iconTheme: IconThemeData(color: Colors.black),
           elevation: 0.0,
           centerTitle: false,
           title: Text(
@@ -21,17 +19,14 @@ class Service_Page extends StatelessWidget {
   }
 }
 
-class _buildService extends StatelessWidget{
+class _buildService extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: <Widget>[
-
-          ],
-        )
-    );
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: <Widget>[],
+    ));
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nonamukja/NavigationPage/navigation_controll.dart';
 import 'package:nonamukja/widget/clay_button.dart';
 
 class LoginDialog extends StatelessWidget {
@@ -19,6 +20,10 @@ class LoginDialog extends StatelessWidget {
             children: [
               Text(
                 '로그인',
+                style: TextStyle(
+                    fontSize: 25,
+                    fontFamily: 'MinSans-Medium',
+                    fontWeight: FontWeight.bold),
               ),
               Container(
                   padding: EdgeInsets.only(top: 30),
@@ -50,7 +55,12 @@ class LoginDialog extends StatelessWidget {
               Container(
                   padding: EdgeInsets.only(top: 20),
                   child: GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ControllScreen()));
+                    },
                     child:
                         ClayPurpleButton(content: '확인', width: 130, height: 40),
                   ))
@@ -80,6 +90,10 @@ class SigninDialog extends StatelessWidget {
             children: [
               Text(
                 '회원가입',
+                style: TextStyle(
+                    fontSize: 25,
+                    fontFamily: 'MinSans-Medium',
+                    fontWeight: FontWeight.bold),
               ),
               Container(
                   padding: EdgeInsets.only(top: 30),

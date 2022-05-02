@@ -6,9 +6,7 @@ class Notice_Page extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          iconTheme: IconThemeData(
-              color: Colors.black
-          ),
+          iconTheme: IconThemeData(color: Colors.black),
           elevation: 0.0,
           centerTitle: false,
           title: Text(
@@ -21,37 +19,36 @@ class Notice_Page extends StatelessWidget {
   }
 }
 
-class _buildNotice extends StatelessWidget{
+class _buildNotice extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: <Widget>[
-            Notice_Container(),
-            Notice_Container(),
-            Notice_Container(),
-            Notice_Container(),
-            Notice_Container(),
-          ],
-        )
-    );
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: <Widget>[
+        Notice_Container(),
+        Notice_Container(),
+        Notice_Container(),
+        Notice_Container(),
+        Notice_Container(),
+      ],
+    ));
   }
 }
 
-class Notice_Container extends StatelessWidget{
-
+class Notice_Container extends StatelessWidget {
   TextStyle boldStyle =
-  TextStyle(color: Colors.black, fontWeight: FontWeight.bold);
+      TextStyle(color: Colors.black, fontWeight: FontWeight.bold);
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
-
       title: Text('Test'),
-      trailing: const Icon(CupertinoIcons.chevron_forward,size: 15,),
+      trailing: const Icon(
+        CupertinoIcons.chevron_forward,
+        size: 15,
+      ),
     );
-
   }
 }
