@@ -76,7 +76,6 @@ List<PersistentBottomNavBarItem> _navBarsItems() {
 
 List<Widget> _buildScreens() {
   return [Main_Page(), Chat_Page(), ProfilePage()];
-}
 
 class ControllScreen extends StatelessWidget {
   @override
