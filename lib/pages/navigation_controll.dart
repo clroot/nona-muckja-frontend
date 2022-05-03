@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:nonamukja/NavigationPage/EtcPage/user_profile.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
-import 'ChatPage/chat_page.dart';
-import 'MainPage/main_page.dart';
+import 'package:nonamukja/pages/EtcPage/user_profile.dart';
+import 'package:nonamukja/pages/ChatPage/chat_page.dart';
+import 'package:nonamukja/pages/MainPage/main_page.dart';
 
 PersistentTabController _controller = PersistentTabController(initialIndex: 0);
 
@@ -75,7 +75,8 @@ List<PersistentBottomNavBarItem> _navBarsItems() {
 }
 
 List<Widget> _buildScreens() {
-  return [Main_Page(), Chat_Page(), ProfilePage()];
+  return [MainPage(), ChatPage(), ProfilePage()];
+}
 
 class ControllScreen extends StatelessWidget {
   @override

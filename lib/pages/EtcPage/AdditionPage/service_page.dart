@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class Terms_and_Policies_Page extends StatelessWidget {
+class ServicePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,11 +15,11 @@ class Terms_and_Policies_Page extends StatelessWidget {
           ),
           backgroundColor: Colors.white,
         ),
-        body: _buildTermsPolicies());
+        body: BuildService());
   }
 }
 
-class _buildTermsPolicies extends StatelessWidget {
+class BuildService extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(

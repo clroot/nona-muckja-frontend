@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nonamukja/NavigationPage/navigation_controll.dart';
+import 'package:nonamukja/pages/navigation_controll.dart';
 import 'package:nonamukja/widget/clay_button.dart';
 
 class LoginDialog extends StatelessWidget {

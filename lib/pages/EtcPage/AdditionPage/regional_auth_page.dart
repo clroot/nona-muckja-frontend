@@ -1,25 +1,25 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class Category_Page extends StatelessWidget {
+class RegionalAuth_Page extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           iconTheme: IconThemeData(color: Colors.black),
           elevation: 0.0,
-          centerTitle: true,
+          centerTitle: false,
           title: Text(
-            '카테고리',
+            'Test',
             style: TextStyle(color: Colors.black),
           ),
           backgroundColor: Colors.white,
         ),
-        body: _buildCategoryPage());
+        body: BuildRegionalAuth());
   }
 }
 
-class _buildCategoryPage extends StatelessWidget {
+class BuildRegionalAuth extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(

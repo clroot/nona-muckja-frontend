@@ -1,25 +1,25 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class Alram_Page extends StatelessWidget {
+class VersionPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           iconTheme: IconThemeData(color: Colors.black),
           elevation: 0.0,
-          centerTitle: true,
+          centerTitle: false,
           title: Text(
-            '알림',
+            '버전정보',
             style: TextStyle(color: Colors.black),
           ),
           backgroundColor: Colors.white,
         ),
-        body: _buildAlramPage());
+        body: BuildVersion());
   }
 }
 
-class _buildAlramPage extends StatelessWidget {
+class BuildVersion extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(

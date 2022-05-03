@@ -1,25 +1,31 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class Regional_Settings_Page extends StatelessWidget {
+class SearchPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           iconTheme: IconThemeData(color: Colors.black),
           elevation: 0.0,
-          centerTitle: false,
-          title: Text(
-            'Test',
-            style: TextStyle(color: Colors.black),
+          title: TextField(
+            decoration: InputDecoration(
+                icon: Icon(CupertinoIcons.search),
+                hintText: 'search...',
+                hintStyle: TextStyle(
+                  color: Colors.grey,
+                  fontSize: 18,
+                  fontStyle: FontStyle.italic,
+                ),
+                border: InputBorder.none),
           ),
           backgroundColor: Colors.white,
         ),
-        body: _buildRegionalSettings());
+        body: BuildSearchPage());
   }
 }
 
-class _buildRegionalSettings extends StatelessWidget {
+class BuildSearchPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(

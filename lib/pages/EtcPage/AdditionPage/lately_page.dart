@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class Notice_Page extends StatelessWidget {
+class LatelyPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -10,16 +10,16 @@ class Notice_Page extends StatelessWidget {
           elevation: 0.0,
           centerTitle: false,
           title: Text(
-            '공지사항',
+            '최근 본 가게',
             style: TextStyle(color: Colors.black),
           ),
           backgroundColor: Colors.white,
         ),
-        body: _buildNotice());
+        body: BuildLately());
   }
 }
 
-class _buildNotice extends StatelessWidget {
+class BuildLately extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -27,24 +27,29 @@ class _buildNotice extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.end,
       children: <Widget>[
-        Notice_Container(),
-        Notice_Container(),
-        Notice_Container(),
-        Notice_Container(),
-        Notice_Container(),
+        LatelyContainer(),
+        LatelyContainer(),
+        LatelyContainer(),
+        LatelyContainer(),
+        LatelyContainer(),
       ],
     ));
   }
 }
 
-class Notice_Container extends StatelessWidget {
-  TextStyle boldStyle =
-      TextStyle(color: Colors.black, fontWeight: FontWeight.bold);
-
+class LatelyContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      title: Text('Test'),
+      leading: CircleAvatar(
+        radius: 25,
+        backgroundImage: null,
+        backgroundColor: Colors.red,
+      ),
+      title: Text(
+        '가게',
+        style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+      ),
       trailing: const Icon(
         CupertinoIcons.chevron_forward,
         size: 15,
