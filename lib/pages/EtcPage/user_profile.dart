@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nonamukja/widget/card.dart';
-import 'package:nonamukja/NavigationPage/EtcPage/AdditionPage/regional_auth_page.dart';
+import 'package:nonamukja/pages/EtcPage/AdditionPage/regional_auth_page.dart';
 
 class ProfilePage extends StatelessWidget {
   @override
@@ -20,7 +20,7 @@ class ProfilePage extends StatelessWidget {
                   padding: EdgeInsets.only(top: 30),
                   width: MediaQuery.of(context).size.width * 0.9,
                   child: CustomCard(
-                    changePage: Regional_Auth_Page(),
+                    changePage: RegionalAuth_Page(),
                     content: '동내 설정',
                     icon: Icons.location_on,
                   ),
@@ -28,7 +28,7 @@ class ProfilePage extends StatelessWidget {
                 Container(
                   width: MediaQuery.of(context).size.width * 0.9,
                   child: CustomCard(
-                    changePage: Regional_Auth_Page(),
+                    changePage: RegionalAuth_Page(),
                     content: '설정',
                     icon: Icons.settings,
                   ),

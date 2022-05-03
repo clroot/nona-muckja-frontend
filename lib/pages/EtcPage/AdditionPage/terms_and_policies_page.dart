@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class Regional_Auth_Page extends StatelessWidget {
+class Terms_and_Policies_Page extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -10,16 +10,16 @@ class Regional_Auth_Page extends StatelessWidget {
           elevation: 0.0,
           centerTitle: false,
           title: Text(
-            'Test',
+            '고객센터',
             style: TextStyle(color: Colors.black),
           ),
           backgroundColor: Colors.white,
         ),
-        body: _buildRegionalAuth());
+        body: BuildTermsPolicies());
   }
 }
 
-class _buildRegionalAuth extends StatelessWidget {
+class BuildTermsPolicies extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(

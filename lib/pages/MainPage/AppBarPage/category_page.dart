@@ -1,25 +1,25 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class Version_Page extends StatelessWidget {
+class CategoryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           iconTheme: IconThemeData(color: Colors.black),
           elevation: 0.0,
-          centerTitle: false,
+          centerTitle: true,
           title: Text(
-            '버전정보',
+            '카테고리',
             style: TextStyle(color: Colors.black),
           ),
           backgroundColor: Colors.white,
         ),
-        body: _buildVersion());
+        body: BuildCategoryPage());
   }
 }
 
-class _buildVersion extends StatelessWidget {
+class BuildCategoryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(

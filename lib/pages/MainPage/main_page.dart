@@ -1,12 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:nonamukja/NavigationPage/MainPage/AppBarPage/alram_page.dart';
-import 'package:nonamukja/NavigationPage/MainPage/AppBarPage/category_page.dart';
-import 'package:nonamukja/NavigationPage/MainPage/AppBarPage/search_page.dart';
-
+import 'package:nonamukja/pages/MainPage/AppBarPage/alram_page.dart';
+import 'package:nonamukja/pages/MainPage/AppBarPage/category_page.dart';
+import 'package:nonamukja/pages/MainPage/AppBarPage/search_page.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
-class Main_Page extends StatelessWidget {
+class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,19 +22,19 @@ class Main_Page extends StatelessWidget {
               icon: Icon(CupertinoIcons.search),
               padding: const EdgeInsets.only(right: 15),
               onPressed: () => pushNewScreen(context,
-                  screen: Search_Page(), withNavBar: false),
+                  screen: SearchPage(), withNavBar: false),
             ),
             IconButton(
               icon: Icon(CupertinoIcons.list_bullet),
               padding: const EdgeInsets.only(right: 15),
               onPressed: () => pushNewScreen(context,
-                  screen: Category_Page(), withNavBar: false),
+                  screen: CategoryPage(), withNavBar: false),
             ),
             IconButton(
               icon: Icon(CupertinoIcons.bell),
               padding: const EdgeInsets.only(right: 15),
               onPressed: () => pushNewScreen(context,
-                  screen: Alram_Page(), withNavBar: false),
+                  screen: AlramPage(), withNavBar: false),
             )
           ],
           backgroundColor: Colors.white,
@@ -46,22 +45,18 @@ class Main_Page extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: <Widget>[
             Divider(),
-            Party_Container(),
+            PartyContainer(),
             Divider(),
-            Party_Container(),
+            PartyContainer(),
             Divider(),
-            Party_Container(),
+            PartyContainer(),
             Divider(),
           ],
         )));
   }
 }
 
-class Party_Container extends StatelessWidget {
-  // 볼드 텍스트 스타일
-  TextStyle boldStyle =
-      TextStyle(color: Colors.black, fontWeight: FontWeight.bold);
-
+class PartyContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -76,7 +71,9 @@ class Party_Container extends StatelessWidget {
             backgroundColor: Colors.grey,
           ),
           title: GestureDetector(
-            child: Text('파티', style: boldStyle),
+            child: Text('파티',
+                style: TextStyle(
+                    color: Colors.black, fontWeight: FontWeight.bold)),
             onTap: () {
               print('TEST Tapped');
             },
