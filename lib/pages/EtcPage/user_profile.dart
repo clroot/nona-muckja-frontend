@@ -16,23 +16,30 @@ class ProfilePage extends StatelessWidget {
             child: Column(
               children: [
                 Image.asset('assets/images/profile.png'),
+                Padding(padding: EdgeInsets.only(bottom: 40)),
                 Container(
-                  padding: EdgeInsets.only(top: 30),
-                  width: MediaQuery.of(context).size.width * 0.9,
-                  child: CustomCard(
-                    changePage: RegionalAuth_Page(),
-                    content: '동내 설정',
-                    icon: Icons.location_on,
-                  ),
-                ),
-                Container(
-                  width: MediaQuery.of(context).size.width * 0.9,
-                  child: CustomCard(
-                    changePage: RegionalAuth_Page(),
-                    content: '설정',
-                    icon: Icons.settings,
-                  ),
-                ),
+                    height: MediaQuery.of(context).size.height * 0.4,
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          EtcCard(
+                            changePage: RegionalAuth_Page(),
+                            content: '동내 설정',
+                            icon: Icons.location_on,
+                          ),
+                          EtcCard(
+                              changePage: RegionalAuth_Page(),
+                              content: '설정',
+                              icon: Icons.settings),
+                          EtcCard(
+                              changePage: RegionalAuth_Page(),
+                              content: '설정',
+                              icon: Icons.settings),
+                          EtcCard(
+                              changePage: RegionalAuth_Page(),
+                              content: '설정',
+                              icon: Icons.settings),
+                        ]))
               ],
             )),
       ),
