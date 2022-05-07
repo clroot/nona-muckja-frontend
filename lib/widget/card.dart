@@ -19,12 +19,12 @@ class EtcCard extends StatelessWidget {
     return Container(
       width: MediaQuery.of(context).size.width * 0.9,
       decoration: BoxDecoration(
-          color: Colors.white,
+          color: Color.fromARGB(255, 248, 252, 255),
           borderRadius: BorderRadius.circular(20),
           boxShadow: [
             BoxShadow(
               color: Color.fromARGB(255, 188, 200, 218),
-              offset: Offset(0, 10),
+              offset: Offset(0, 5),
               blurRadius: 10,
             )
           ]),
@@ -39,5 +39,53 @@ class EtcCard extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+class PartyCard extends StatelessWidget {
+  const PartyCard({
+    Key? key,
+    required this.partyTitle,
+  }) : super(key: key);
+
+  final String partyTitle;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        height: MediaQuery.of(context).size.height * 0.15,
+        width: MediaQuery.of(context).size.width * 0.85,
+        child: Row(
+          children: [
+            Container(
+              padding: EdgeInsets.only(right: 10),
+              width: MediaQuery.of(context).size.width * 0.3,
+              decoration: BoxDecoration(
+                color: Color.fromARGB(255, 228, 236, 251),
+                borderRadius: BorderRadius.circular(20),
+              ),
+            ),
+            Padding(padding: EdgeInsets.only(left: 15)),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  partyTitle,
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 20,
+                      fontWeight: FontWeight.w400,
+                      fontFamily: 'MinSans-Medium'),
+                ),
+                Text(
+                  partyTitle,
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 15,
+                      fontFamily: 'MinSans-Medium'),
+                ),
+              ],
+            )
+          ],
+        ));
   }
 }
