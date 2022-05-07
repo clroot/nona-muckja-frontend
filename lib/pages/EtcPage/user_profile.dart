@@ -11,8 +11,7 @@ class ProfilePage extends StatelessWidget {
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height * 2,
             padding: EdgeInsets.only(top: 40),
-            decoration:
-                BoxDecoration(color: Color.fromARGB(255, 240, 245, 255)),
+            decoration: BoxDecoration(color: Colors.white),
             child: Column(
               children: [
                 Image.asset('assets/images/profile.png'),

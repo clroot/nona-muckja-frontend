@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:nonamukja/pages/MainPage/AppBarPage/alram_page.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
 class ChatPage extends StatelessWidget {
@@ -7,13 +8,17 @@ class ChatPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          iconTheme: IconThemeData(color: Colors.black),
+          iconTheme: IconThemeData(color: Color.fromARGB(255, 127, 91, 255)),
           elevation: 0,
           centerTitle: false,
-          title: Text(
-            '채팅',
-            style: TextStyle(color: Colors.black),
-          ),
+          actions: [
+            IconButton(
+              icon: Icon(CupertinoIcons.bell),
+              padding: const EdgeInsets.only(right: 15),
+              onPressed: () => pushNewScreen(context,
+                  screen: AlramPage(), withNavBar: false),
+            )
+          ],
           backgroundColor: Colors.white,
         ),
         body: SingleChildScrollView(

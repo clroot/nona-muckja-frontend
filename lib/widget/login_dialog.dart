@@ -56,10 +56,12 @@ class LoginDialog extends StatelessWidget {
                   padding: EdgeInsets.only(top: 20),
                   child: GestureDetector(
                     onTap: () {
-                      Navigator.push(
+                      Navigator.pushAndRemoveUntil(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => ControllScreen()));
+                              builder: (BuildContext context) =>
+                                  ControllScreen()),
+                          (route) => false);
                     },
                     child:
                         ClayPurpleButton(content: '확인', width: 130, height: 40),
