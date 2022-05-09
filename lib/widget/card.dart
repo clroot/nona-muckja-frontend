@@ -89,3 +89,53 @@ class PartyCard extends StatelessWidget {
         ));
   }
 }
+
+
+class ChatCard extends StatelessWidget {
+  const ChatCard({
+    Key? key,
+    required this.chatTitle,
+  }) : super(key: key);
+
+  final String chatTitle;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        height: MediaQuery.of(context).size.height * 0.09,
+        width: MediaQuery.of(context).size.width * 0.90,
+        child: Row(
+          children: [
+            Container(
+              padding: EdgeInsets.only(right: 10),
+              width: MediaQuery.of(context).size.width * 0.20,
+              height: MediaQuery.of(context).size.height * 0.20,
+              decoration: BoxDecoration(
+                color: Color.fromARGB(255, 228, 236, 251),
+                borderRadius: BorderRadius.circular(20),
+              ),
+            ),
+            Padding(padding: EdgeInsets.only(left: 15)),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  chatTitle,
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 20,
+                      fontWeight: FontWeight.w400,
+                      fontFamily: 'MinSans-Medium'),
+                ),
+                Text(
+                  chatTitle,
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 15,
+                      fontFamily: 'MinSans-Medium'),
+                ),
+              ],
+            )
+          ],
+        ));
+  }
+}
