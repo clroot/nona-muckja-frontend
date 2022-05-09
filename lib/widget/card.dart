@@ -119,14 +119,14 @@ class ChatCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: MediaQuery.of(context).size.height * 0.09,
+        height: 80,
         width: MediaQuery.of(context).size.width * 0.90,
         child: Row(
           children: [
             Container(
               padding: EdgeInsets.only(right: 10),
-              width: MediaQuery.of(context).size.width * 0.20,
-              height: MediaQuery.of(context).size.height * 0.20,
+              width: 60,
+              height: 60,
               decoration: BoxDecoration(
                 color: Color.fromARGB(255, 228, 236, 251),
                 borderRadius: BorderRadius.circular(20),
@@ -136,6 +136,7 @@ class ChatCard extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                Padding(padding: EdgeInsets.only(top: 8)),
                 Text(
                   chatTitle,
                   style: TextStyle(
@@ -147,7 +148,7 @@ class ChatCard extends StatelessWidget {
                 Text(
                   chatTitle,
                   style: TextStyle(
-                      color: Colors.black,
+                      color: Colors.grey,
                       fontSize: 15,
                       fontFamily: 'MinSans-Medium'),
                 ),
