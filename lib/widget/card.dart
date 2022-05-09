@@ -68,6 +68,7 @@ class PartyCard extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                Padding(padding: EdgeInsets.only(top: 8)),
                 Text(
                   partyTitle,
                   style: TextStyle(
@@ -79,9 +80,26 @@ class PartyCard extends StatelessWidget {
                 Text(
                   partyTitle,
                   style: TextStyle(
-                      color: Colors.black,
+                      color: Colors.grey,
                       fontSize: 15,
                       fontFamily: 'MinSans-Medium'),
+                ),
+                Row(
+                  children: [
+                    Icon(
+                      Icons.alarm,
+                      size: 14,
+                      color: Color.fromARGB(255, 127, 91, 255),
+                    ),
+                    Padding(padding: EdgeInsets.only(left: 3)),
+                    Text(
+                      '13:56',
+                      style: TextStyle(
+                          color: Colors.grey,
+                          fontSize: 15,
+                          fontFamily: 'MinSans-Medium'),
+                    ),
+                  ],
                 ),
               ],
             )
