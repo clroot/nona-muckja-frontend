@@ -14,6 +14,17 @@ class MainPage extends StatelessWidget {
           iconTheme: IconThemeData(color: Color.fromARGB(255, 127, 91, 255)),
           elevation: 0.0,
           centerTitle: false,
+          title: Container(
+              padding: EdgeInsets.only(top: 10),
+              child: Row(
+                children: [
+                  Text("상도동",
+                      style: TextStyle(
+                          color: Color.fromARGB(255, 127, 91, 255),
+                          fontSize: 25)),
+                  Icon(Icons.keyboard_arrow_down),
+                ],
+              )),
           actions: <Widget>[
             IconButton(
               icon: Icon(CupertinoIcons.search),
