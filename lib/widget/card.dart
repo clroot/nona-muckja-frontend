@@ -158,3 +158,44 @@ class ChatCard extends StatelessWidget {
         ));
   }
 }
+
+
+class CategoryCard extends StatelessWidget {
+  const CategoryCard(
+      {Key? key,
+        required this.changePage,
+        required this.content,
+        })
+      : super(key: key);
+
+  final String content;
+  final Widget changePage;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: MediaQuery.of(context).size.width * 0.45,
+      height: MediaQuery.of(context).size.height * 0.15,
+      child:Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15.0),
+        ),
+        color: Color.fromARGB(255, 127, 91, 255),
+            child: InkWell(
+                borderRadius: BorderRadius.circular(15),
+                splashColor: Colors.blue.withAlpha(30),
+                onTap: () =>
+                    pushNewScreen(context, screen: changePage, withNavBar: false),
+                child:  Center(
+                    child: Text(this.content,style: TextStyle(fontSize: 25,fontFamily: 'MinSans-Medium'),)
+                )
+            ),
+          )
+
+
+
+
+
+    );
+  }
+}
