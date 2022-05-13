@@ -48,6 +48,7 @@ class MainPage extends StatelessWidget {
           backgroundColor: Colors.white,
         ),
         body: Container(
+
           decoration: BoxDecoration(color: Colors.white),
           child: SingleChildScrollView(
               child: Column(children: <Widget>[
@@ -77,6 +78,15 @@ class MainPage extends StatelessWidget {
             ),
             Divider(),
           ])),
-        ));
+
+        ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          // Add your onPressed code here!
+        },
+        backgroundColor: Color.fromARGB(255, 127, 91, 255),
+        child: const Icon(Icons.add),
+      ),
+    );
   }
 }
