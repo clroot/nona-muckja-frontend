@@ -100,16 +100,33 @@ class SigninDialog extends StatelessWidget {
               Container(
                   padding: EdgeInsets.only(top: 30),
                   width: MediaQuery.of(context).size.width * 0.7,
-                  child: TextFormField(
-                      decoration: InputDecoration(
-                          prefixIcon: Icon(Icons.email),
-                          focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(20),
-                              borderSide: BorderSide(
-                                  color: Color.fromARGB(255, 127, 91, 255))),
-                          enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(20)),
-                          labelText: 'email'))),
+                  child: Form(
+                    autovalidateMode: AutovalidateMode.always,
+                    child: TextFormField(
+
+                        decoration: InputDecoration(
+
+                            prefixIcon: Icon(Icons.email),
+                            focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(20),
+                                borderSide: BorderSide(
+                                    color: Color.fromARGB(255, 127, 91, 255)
+                                )
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(20)
+                            ),
+                            labelText: 'email',
+                            hintText: 'you@example.com',
+
+                        ),
+                      validator: (value) => validateEmail(value),
+
+
+                    ),
+
+                  )
+              ),
               Container(
                   padding: EdgeInsets.only(top: 10),
                   width: MediaQuery.of(context).size.width * 0.7,
@@ -149,6 +166,20 @@ class SigninDialog extends StatelessWidget {
           ),
         ),
       ),
+
     );
   }
 }
+
+String? validateEmail(String? value) {
+  String pattern =
+      r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]"
+      r"{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]"
+      r"{0,253}[a-zA-Z0-9])?)*$";
+  RegExp regex = RegExp(pattern);
+  if (value == null || value.isEmpty || !regex.hasMatch(value))
+    return 'Enter a valid email address';
+  else
+    return null;
+}
+
