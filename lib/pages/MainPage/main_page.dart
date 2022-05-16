@@ -48,45 +48,40 @@ class MainPage extends StatelessWidget {
           backgroundColor: Colors.white,
         ),
         body: Container(
-
-          decoration: BoxDecoration(color: Colors.white),
-          child: SingleChildScrollView(
-              child: Column(children: <Widget>[
-            Divider(),
-            PartyCard(
-              partyTitle: "정보관",
-            ),
-            Divider(),
-            PartyCard(
-              partyTitle: "정보관",
-            ),
-            Divider(),
-            PartyCard(
-              partyTitle: "정보관",
-            ),
-            Divider(),
-            PartyCard(
-              partyTitle: "정보관",
-            ),
-            Divider(),
-            PartyCard(
-              partyTitle: "정보관",
-            ),
-            Divider(),
-            PartyCard(
-              partyTitle: "정보관",
-            ),
-            Divider(),
-          ])),
-
-        ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          // Add your onPressed code here!
-        },
-        backgroundColor: Color.fromARGB(255, 127, 91, 255),
-        child: const Icon(Icons.add),
-      ),
-    );
+            decoration: BoxDecoration(color: Colors.white),
+            child: SingleChildScrollView(
+                child: Column(children: <Widget>[
+              Divider(),
+              PartyCard(
+                partyTitle: "정보관 디디 치킨",
+                partyLocation: "정보관",
+              ),
+              Divider(),
+              PartyCard(
+                partyTitle: "정보관 디디 치킨",
+                partyLocation: "정보관",
+              ),
+              Divider(),
+              PartyCard(
+                partyTitle: "정보관 디디 치킨",
+                partyLocation: "정보관",
+              ),
+              Divider(),
+              PartyCard(
+                partyTitle: "정보관 디디 치킨",
+                partyLocation: "정보관",
+              ),
+              Divider(),
+              PartyCard(
+                partyTitle: "정보관 디디 치킨",
+                partyLocation: "정보관",
+              ),
+              Divider(),
+              PartyCard(
+                partyTitle: "정보관 디디 치킨",
+                partyLocation: "정보관",
+              ),
+              Divider(),
+            ]))));
   }
 }
