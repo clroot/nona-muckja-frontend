@@ -1,22 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:nonamukja/pages/navigation_controll.dart';
+import 'package:nonamukja/viewModel/user_manage_viewModel.dart';
+import 'package:nonamukja/viewModel/user_manage_viewModel.dart';
 import 'package:nonamukja/widget/clay_button.dart';
 
-class LoginDialog extends StatelessWidget {
+class LoginDialog extends StatefulWidget {
   const LoginDialog({Key? key}) : super(key: key);
 
   @override
+  State<LoginDialog> createState() => _LoginDialogState();
+}
+
+class _LoginDialogState extends State<LoginDialog> {
+  late String erroText;
+  @override
   Widget build(BuildContext context) {
     return Dialog(
-      shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20.0)), //this right here
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
       child: Container(
         height: MediaQuery.of(context).size.height * 0.55,
         child: Padding(
           padding: const EdgeInsets.all(12.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            // crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 '로그인',
@@ -28,16 +34,33 @@ class LoginDialog extends StatelessWidget {
               Container(
                   padding: EdgeInsets.only(top: 30),
                   width: MediaQuery.of(context).size.width * 0.7,
-                  child: TextFormField(
+                  child: Form(
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    child: TextFormField(
                       decoration: InputDecoration(
-                          prefixIcon: Icon(Icons.email),
-                          focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(20),
-                              borderSide: BorderSide(
-                                  color: Color.fromARGB(255, 127, 91, 255))),
-                          enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(20)),
-                          labelText: 'email'))),
+                        prefixIcon: Icon(Icons.email),
+                        focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20),
+                            borderSide: BorderSide(
+                                color: Color.fromARGB(255, 127, 91, 255))),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        focusedErrorBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20),
+                            borderSide: BorderSide(
+                                color: Color.fromARGB(255, 255, 91, 91))),
+                        errorBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20),
+                          borderSide: BorderSide(
+                              color: Color.fromARGB(255, 255, 91, 91)),
+                        ),
+                        labelText: 'email',
+                        hintText: 'you@example.com',
+                      ),
+                      validator: (value) => validateEmail(value),
+                    ),
+                  )),
               Container(
                   padding: EdgeInsets.only(top: 10),
                   width: MediaQuery.of(context).size.width * 0.7,
@@ -53,19 +76,21 @@ class LoginDialog extends StatelessWidget {
                           labelText: 'password'),
                       obscureText: true)),
               Container(
-                  padding: EdgeInsets.only(top: 20),
-                  child: GestureDetector(
-                    onTap: () {
-                      Navigator.pushAndRemoveUntil(
-                          context,
-                          MaterialPageRoute(
-                              builder: (BuildContext context) =>
-                                  ControllScreen()),
-                          (route) => false);
-                    },
-                    child:
-                        ClayPurpleButton(content: '확인', width: 130, height: 40),
-                  ))
+                padding: EdgeInsets.only(top: 20),
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                        builder: (BuildContext context) => ControllScreen(),
+                      ),
+                      (route) => false,
+                    );
+                  },
+                  child:
+                      ClayPurpleButton(content: '확인', width: 130, height: 40),
+                ),
+              ),
             ],
           ),
         ),
@@ -88,7 +113,6 @@ class SigninDialog extends StatelessWidget {
           padding: const EdgeInsets.all(12.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            // crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 '회원가입',
@@ -101,32 +125,29 @@ class SigninDialog extends StatelessWidget {
                   padding: EdgeInsets.only(top: 30),
                   width: MediaQuery.of(context).size.width * 0.7,
                   child: Form(
-                    autovalidateMode: AutovalidateMode.always,
-                    child: TextFormField(
-
-                        decoration: InputDecoration(
-
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
+                      child: TextFormField(
+                          decoration: InputDecoration(
                             prefixIcon: Icon(Icons.email),
                             focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(20),
                                 borderSide: BorderSide(
-                                    color: Color.fromARGB(255, 127, 91, 255)
-                                )
-                            ),
+                                    color: Color.fromARGB(255, 127, 91, 255))),
                             enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(20)
+                                borderRadius: BorderRadius.circular(20)),
+                            focusedErrorBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(20),
+                                borderSide: BorderSide(
+                                    color: Color.fromARGB(255, 255, 91, 91))),
+                            errorBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20),
+                              borderSide: BorderSide(
+                                  color: Color.fromARGB(255, 255, 91, 91)),
                             ),
                             labelText: 'email',
                             hintText: 'you@example.com',
-
-                        ),
-                      validator: (value) => validateEmail(value),
-
-
-                    ),
-
-                  )
-              ),
+                          ),
+                          validator: (value) => validateEmail(value)))),
               Container(
                   padding: EdgeInsets.only(top: 10),
                   width: MediaQuery.of(context).size.width * 0.7,
@@ -166,20 +187,6 @@ class SigninDialog extends StatelessWidget {
           ),
         ),
       ),
-
     );
   }
 }
-
-String? validateEmail(String? value) {
-  String pattern =
-      r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]"
-      r"{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]"
-      r"{0,253}[a-zA-Z0-9])?)*$";
-  RegExp regex = RegExp(pattern);
-  if (value == null || value.isEmpty || !regex.hasMatch(value))
-    return 'Enter a valid email address';
-  else
-    return null;
-}
-

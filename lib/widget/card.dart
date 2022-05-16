@@ -43,12 +43,12 @@ class EtcCard extends StatelessWidget {
 }
 
 class PartyCard extends StatelessWidget {
-  const PartyCard({
-    Key? key,
-    required this.partyTitle,
-  }) : super(key: key);
+  const PartyCard(
+      {Key? key, required this.partyTitle, required this.partyLocation})
+      : super(key: key);
 
   final String partyTitle;
+  final String partyLocation;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -73,12 +73,12 @@ class PartyCard extends StatelessWidget {
                   partyTitle,
                   style: TextStyle(
                       color: Colors.black,
-                      fontSize: 20,
+                      fontSize: 18,
                       fontWeight: FontWeight.w400,
                       fontFamily: 'MinSans-Medium'),
                 ),
                 Text(
-                  partyTitle,
+                  partyLocation,
                   style: TextStyle(
                       color: Colors.grey,
                       fontSize: 15,
@@ -107,7 +107,6 @@ class PartyCard extends StatelessWidget {
         ));
   }
 }
-
 
 class ChatCard extends StatelessWidget {
   const ChatCard({
