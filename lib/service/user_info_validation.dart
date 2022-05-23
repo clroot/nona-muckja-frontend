@@ -3,7 +3,7 @@ String? validateEmail(String? value) {
       r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
   RegExp regex = RegExp(pattern);
   if (value == null || value.isEmpty || !regex.hasMatch(value))
-    return 'Enter a valid email address';
+    return "올바르지 않은 이메일 입니다.";
   else
     return null;
 }
