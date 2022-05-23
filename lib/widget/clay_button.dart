@@ -61,34 +61,36 @@ class ClayPurpleButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        width: this.width,
-        height: this.height,
-        child: Container(
-          decoration: BoxDecoration(
-              gradient: LinearGradient(
-                  begin: Alignment(-0.1, -0.7),
-                  end: Alignment(0.05, 1),
-                  colors: [
-                    Color.fromARGB(255, 127, 91, 255),
-                    Color.fromARGB(255, 70, 36, 194),
-                  ]),
-              borderRadius: BorderRadius.circular(20),
-              boxShadow: [
-                BoxShadow(
-                  color: Color.fromARGB(255, 189, 172, 251),
-                  offset: Offset(0, 20),
-                  blurRadius: 25,
-                )
-              ]),
-          child: Center(
-              child: Text(
+      width: this.width,
+      height: this.height,
+      child: Container(
+        decoration: BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment(-0.1, -0.7),
+                end: Alignment(0.05, 1),
+                colors: [
+                  Color.fromARGB(255, 127, 91, 255),
+                  Color.fromARGB(255, 70, 36, 194),
+                ]),
+            borderRadius: BorderRadius.circular(20),
+            boxShadow: [
+              BoxShadow(
+                color: Color.fromARGB(255, 189, 172, 251),
+                offset: Offset(0, 20),
+                blurRadius: 25,
+              )
+            ]),
+        child: Center(
+          child: Text(
             this.content,
             style: TextStyle(
                 color: Colors.white,
                 fontSize: 17,
                 fontFamily: 'MinSans-Medium',
                 fontWeight: FontWeight.bold),
-          )),
-        ));
+          ),
+        ),
+      ),
+    );
   }
 }
