@@ -82,6 +82,21 @@ class MainPage extends StatelessWidget {
                 partyLocation: "정보관",
               ),
               Divider(),
-            ]))));
+            ]
+                )
+
+
+            ),
+
+
+        ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          // Add your onPressed code here!
+        },
+        backgroundColor: Color.fromARGB(255, 127, 91, 255),
+        child: const Icon(Icons.add),
+      ),
+    );
   }
 }
