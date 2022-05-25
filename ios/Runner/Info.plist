@@ -43,5 +43,9 @@
 	<false/>
 	<key>CADisableMinimumFrameDurationOnPhone</key>
 	<true/>
+	
+	<!-- 어플 사용시 위치 권한 허용 -->
+	<key>NSLocationWhenInUseUsageDescription</key>
+    <string>${PRODUCT_NAME} Need location when in use</string>
 </dict>
 </plist>
