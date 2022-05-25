@@ -33,6 +33,8 @@ dependencies:
   kakao_flutter_sdk: ^1.1.1
   webview_flutter: ^3.0.4
   geolocator: ^8.2.1
+  rxdart: ^0.27.3
+  permission_handler: ^9.2.0
 
 dev_dependencies:
   flutter_test:
