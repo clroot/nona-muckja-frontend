@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nonamukja/blocs/user_location_bloc.dart';
 import 'package:nonamukja/model/user_location_model.dart';
+import 'package:nonamukja/widget/location/user_location_card.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class UserLocationSetting extends StatefulWidget {
@@ -38,7 +39,8 @@ class _UserLocationSettingState extends State<UserLocationSetting> {
     return Dialog(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
       child: Container(
-        height: MediaQuery.of(context).size.height * 0.5,
+        width: MediaQuery.of(context).size.width * 0.6,
+        height: MediaQuery.of(context).size.height * 0.35,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -67,24 +69,27 @@ class _UserLocationSettingState extends State<UserLocationSetting> {
               iconSize: 40,
               color: Color.fromARGB(255, 127, 91, 255),
             ),
-            StreamBuilder(
-              builder: ((context, AsyncSnapshot<UserLocationModel> snapshot) {
-                if (snapshot.hasData) {
-                  return Text(snapshot.data!.documents!.first.region1depthName
-                      .toString());
-                } else if (snapshot.hasError) {
-                  return Text(snapshot.error.toString());
-                }
-                return Text(
-                  '위치 찾기',
-                  style: TextStyle(
-                    fontSize: 15,
-                    fontFamily: 'MinSans-Medium',
-                    color: Color.fromARGB(255, 127, 91, 255),
-                  ),
-                );
-              }),
-              stream: _userLocationBloC.userLocationList,
+            Text(
+              '위치 찾기',
+              style: TextStyle(
+                fontSize: 15,
+                fontFamily: 'MinSans-Medium',
+                color: Color.fromARGB(255, 127, 91, 255),
+              ),
+            ),
+            Divider(),
+            Container(
+              child: StreamBuilder(
+                builder: ((context, AsyncSnapshot<UserLocationModel> snapshot) {
+                  if (snapshot.hasData) {
+                    return UserLocationCard(userLocationModel: snapshot.data);
+                  } else if (snapshot.hasError) {
+                    return Text(snapshot.error.toString());
+                  }
+                  return Text("");
+                }),
+                stream: _userLocationBloC.userLocationList,
+              ),
             ),
           ],
         ),
