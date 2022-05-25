@@ -3,12 +3,13 @@ import 'package:http/http.dart' show Client;
 import 'dart:convert';
 import 'package:nonamukja/resources/repositories/location/user_location_repository.dart';
 import 'package:nonamukja/model/user_location_model.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class UserLocationProvieder {
   Client client = Client();
-  String _apikey = 'e66748e75ec78bc0a16ba22b7295c9c2';
   UserLocationRepository userLocationRepository = UserLocationRepository();
 
+  String? _apikey = dotenv.env['KAKAO_REST_API'];
   Future<UserLocationModel> zipCodeProvieder() async {
     Position position = await userLocationRepository.currentUserLocation();
 

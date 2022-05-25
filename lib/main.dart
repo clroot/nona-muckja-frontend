@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:nonamukja/pages/user_manage.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-void main() => runApp(App());
+Future main() async {
+  await dotenv.load(fileName: ".env");
+  runApp(App());
+}
 
 class App extends StatelessWidget {
   @override
