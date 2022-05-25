@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nonamukja/widget/card.dart';
+import 'package:nonamukja/widget/etc/card.dart';
 import 'package:nonamukja/pages/EtcPage/AdditionPage/regional_auth_page.dart';
 
 class ProfilePage extends StatelessWidget {

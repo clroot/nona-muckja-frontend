@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nonamukja/pages/MainPage/AppBarPage/alram_page.dart';
-import 'package:nonamukja/widget/card.dart';
+import 'package:nonamukja/widget/etc/card.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
 class ChatPage extends StatelessWidget {
@@ -26,7 +26,6 @@ class ChatPage extends StatelessWidget {
           decoration: BoxDecoration(color: Colors.white),
           child: SingleChildScrollView(
               child: Column(
-
             children: <Widget>[
               Divider(),
               ChatCard(chatTitle: '디디치킨'),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nonamukja/pages/navigation_controll.dart';
-import 'package:nonamukja/service/user_info_validation.dart';
-import 'package:nonamukja/widget/clay_button.dart';
+import 'package:nonamukja/resources/etc/user_info_validation.dart';
+import 'package:nonamukja/widget/etc/clay_button.dart';
 
 class LoginDialog extends StatefulWidget {
   const LoginDialog({Key? key}) : super(key: key);

@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nonamukja/pages/MainPage/AppBarPage/alram_page.dart';
-import 'package:nonamukja/widget/card.dart';
+import 'package:nonamukja/widget/etc/card.dart';
 
 class CategoryPage extends StatelessWidget {
   @override
@@ -35,7 +35,6 @@ class BuildCategoryPage extends StatelessWidget {
           children: [
             CategoryCard(changePage: AlramPage(), content: '치킨'),
             CategoryCard(changePage: AlramPage(), content: '치킨'),
-
           ],
         ),
         Row(
@@ -43,7 +42,6 @@ class BuildCategoryPage extends StatelessWidget {
           children: [
             CategoryCard(changePage: AlramPage(), content: '치킨'),
             CategoryCard(changePage: AlramPage(), content: '치킨'),
-
           ],
         ),
         Row(
@@ -51,7 +49,6 @@ class BuildCategoryPage extends StatelessWidget {
           children: [
             CategoryCard(changePage: AlramPage(), content: '치킨'),
             CategoryCard(changePage: AlramPage(), content: '치킨'),
-
           ],
         )
       ],
