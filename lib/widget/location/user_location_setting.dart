@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:nonamukja/blocs/user_location_bloc.dart';
-import 'package:nonamukja/model/user_location_model.dart';
 import 'package:nonamukja/widget/location/user_location_card.dart';
 import 'package:permission_handler/permission_handler.dart';
 
@@ -12,6 +11,19 @@ class UserLocationSetting extends StatefulWidget {
 }
 
 class _UserLocationSettingState extends State<UserLocationSetting> {
+  bool _visibility = false;
+  void _show() {
+    setState(() {
+      _visibility = true;
+    });
+  }
+
+  void _hide() {
+    setState(() {
+      _visibility = false;
+    });
+  }
+
   Future<bool> permissionServices() async {
     PermissionStatus statuses = await Permission.location.request();
 
@@ -63,7 +75,14 @@ class _UserLocationSettingState extends State<UserLocationSetting> {
             Padding(padding: EdgeInsets.only(top: 20)),
             IconButton(
               onPressed: () {
-                _userLocationBloC.fetchUserLocation();
+                _visibility ? _hide() : _show();
+                permissionCheck().then((value) {
+                  if (value) {
+                    _userLocationBloC.fetchUserLocation();
+                  } else {
+                    permissionServices();
+                  }
+                });
               },
               icon: Icon(Icons.location_on_outlined),
               iconSize: 40,
@@ -78,15 +97,21 @@ class _UserLocationSettingState extends State<UserLocationSetting> {
               ),
             ),
             Divider(),
-            Container(
+            Visibility(
+              visible: _visibility,
               child: StreamBuilder(
-                builder: ((context, AsyncSnapshot<UserLocationModel> snapshot) {
+                builder:
+                    ((context, AsyncSnapshot<Map<String, dynamic>> snapshot) {
                   if (snapshot.hasData) {
-                    return UserLocationCard(userLocationModel: snapshot.data);
+                    return UserLocationCard(
+                      userLocationModel: snapshot.data!['userLocation'],
+                      position: snapshot.data!['position'],
+                    );
                   } else if (snapshot.hasError) {
                     return Text(snapshot.error.toString());
+                  } else {
+                    return CircularProgressIndicator();
                   }
-                  return Text("");
                 }),
                 stream: _userLocationBloC.userLocationList,
               ),

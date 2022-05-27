@@ -10,19 +10,21 @@ class UserLocationProvieder {
   UserLocationRepository userLocationRepository = UserLocationRepository();
 
   String? _apikey = dotenv.env['KAKAO_REST_API'];
-  Future<UserLocationModel> zipCodeProvieder() async {
+  Future<Map<String, dynamic>> zipCodeProvieder() async {
     Position position = await userLocationRepository.currentUserLocation();
 
-    print(position.longitude);
-    print(position.latitude);
     final response = await client.get(
         Uri.parse(
-            "https://dapi.kakao.com/v2/local/geo/coord2regioncode.json?x=${position.longitude}&y=${position.latitude}"),
+            "https://dapi.kakao.com/v2/local/geo/coord2address.json?x=${position.longitude}&y=${position.latitude}"),
         headers: {'Authorization': 'KakaoAK ${_apikey}'});
     print(response.body.toString());
     if (response.statusCode == 200) {
       // 성공시 Address json 반환
-      return UserLocationModel.fromJson(json.decode(response.body));
+      Map<String, dynamic> userLocation = {
+        'userLocation': UserLocationModel.fromJson(json.decode(response.body)),
+        'position': position
+      };
+      return userLocation;
     } else {
       // 실패 메시지 출력
       throw Exception('위치를 받아오지 못 하였습니다.');
