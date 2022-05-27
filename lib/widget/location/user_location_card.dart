@@ -1,35 +1,38 @@
 import 'package:flutter/material.dart';
-import 'package:kakao_flutter_sdk/kakao_flutter_sdk.dart';
+import 'package:geolocator/geolocator.dart';
 
 import 'package:nonamukja/model/user_location_model.dart';
 
 class UserLocationCard extends StatelessWidget {
-  const UserLocationCard({Key? key, required this.userLocationModel})
+  const UserLocationCard(
+      {Key? key, required this.userLocationModel, required this.position})
       : super(key: key);
 
   final UserLocationModel? userLocationModel;
+  final Position? position;
   @override
   Widget build(BuildContext context) {
+    String roadAddress =
+        userLocationModel!.documents!.first.roadAddress!.addressName.toString();
+    String zipCode =
+        userLocationModel!.documents!.first.roadAddress!.zoneNo.toString();
+    String address =
+        userLocationModel!.documents!.last.address!.addressName.toString();
+    double x = position!.latitude;
+    double y = position!.longitude;
+    Map<String, dynamic> userLocation = {
+      'roadAddress': roadAddress,
+      'zipCode': zipCode,
+      'address': address,
+      'x': x,
+      'y': y
+    };
     return OutlinedButton(
-      onPressed: () {},
-      child: RichText(
-        text: TextSpan(
-          style: DefaultTextStyle.of(context).style,
-          children: [
-            TextSpan(
-                text: userLocationModel!.documents!.last.region1depthName
-                        .toString() +
-                    " "),
-            TextSpan(
-                text: userLocationModel!.documents!.last.region2depthName
-                        .toString() +
-                    " "),
-            TextSpan(
-                text: userLocationModel!.documents!.last.region3depthName
-                        .toString() +
-                    " "),
-          ],
-        ),
+      onPressed: () {
+        Navigator.pop(context, userLocation);
+      },
+      child: Text(
+        address,
       ),
     );
   }

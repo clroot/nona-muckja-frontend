@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:nonamukja/widget/etc/clay_button.dart';
 import 'package:nonamukja/widget/auth/login_dialog.dart';
 import 'package:nonamukja/widget/auth/signin_dialog.dart';
+import 'package:nonamukja/blocs/sigin_bloc.dart';
+import 'package:nonamukja/pages/navigation_controll.dart';
 
 class UserManagePage extends StatefulWidget {
   @override
@@ -9,9 +11,12 @@ class UserManagePage extends StatefulWidget {
 }
 
 class _UserManagePageState extends State<UserManagePage> {
+  UserSinginBloc _userSinginBloc = UserSinginBloc();
   @override
   Widget build(BuildContext context) {
+    Map<String, dynamic> _signinUserInfo;
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Color.fromARGB(255, 240, 245, 255),
       body: Container(
         width: MediaQuery.of(context).size.width,
@@ -55,12 +60,21 @@ class _UserManagePageState extends State<UserManagePage> {
                   Container(
                     padding: EdgeInsets.only(top: 20),
                     child: GestureDetector(
-                      onTap: () {
-                        showDialog(
+                      onTap: () async {
+                        _signinUserInfo = await showDialog(
                             context: context,
                             builder: (BuildContext context) {
                               return SigninDialog();
                             });
+                        await _userSinginBloc
+                            .requestUserSingin(_signinUserInfo);
+                        Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(
+                            builder: (BuildContext context) => ControllScreen(),
+                          ),
+                          (route) => false,
+                        );
                       },
                       child: ClayPurpleButton(
                           content: '회원가입', width: 130, height: 40),
