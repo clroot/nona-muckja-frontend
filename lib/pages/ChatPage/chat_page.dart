@@ -11,6 +11,15 @@ class ChatPage extends StatelessWidget {
         appBar: AppBar(
           iconTheme: IconThemeData(color: Color.fromARGB(255, 127, 91, 255)),
           elevation: 0,
+          title: Container(
+            padding: EdgeInsets.only(top:10),
+            child: Text('채팅',
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+              ),
+            ),
+          ),
           centerTitle: false,
           actions: [
             IconButton(
