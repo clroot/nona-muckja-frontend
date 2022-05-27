@@ -15,6 +15,7 @@ class _UserManagePageState extends State<UserManagePage> {
   @override
   Widget build(BuildContext context) {
     Map<String, dynamic> _signinUserInfo;
+    String singinResualt;
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Color.fromARGB(255, 240, 245, 255),
@@ -66,14 +67,12 @@ class _UserManagePageState extends State<UserManagePage> {
                             builder: (BuildContext context) {
                               return SigninDialog();
                             });
-                        await _userSinginBloc
+                        singinResualt = await _userSinginBloc
                             .requestUserSingin(_signinUserInfo);
-                        Navigator.pushAndRemoveUntil(
-                          context,
-                          MaterialPageRoute(
-                            builder: (BuildContext context) => ControllScreen(),
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(singinResualt),
                           ),
-                          (route) => false,
                         );
                       },
                       child: ClayPurpleButton(
