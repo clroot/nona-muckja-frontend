@@ -21,8 +21,9 @@ class MainPage extends StatelessWidget {
               children: [
                 Text("상도동",
                     style: TextStyle(
+                        fontWeight: FontWeight.bold,
                         color: Color.fromARGB(255, 127, 91, 255),
-                        fontSize: 25)),
+                        )),
                 Icon(Icons.keyboard_arrow_down),
               ],
             )),
