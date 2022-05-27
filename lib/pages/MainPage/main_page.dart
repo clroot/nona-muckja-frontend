@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:nonamukja/pages/MainPage/AppBarPage/alram_page.dart';
 import 'package:nonamukja/pages/MainPage/AppBarPage/category_page.dart';
 import 'package:nonamukja/pages/MainPage/AppBarPage/search_page.dart';
+import 'package:nonamukja/pages/MainPage/PartyPage/party_signin_page.dart';
 import 'package:nonamukja/widget/etc/card.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
@@ -85,9 +86,9 @@ class MainPage extends StatelessWidget {
         ])),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          // Add your onPressed code here!
-        },
+        onPressed: () =>
+          pushNewScreen(context, screen: PartySigninPage(), withNavBar: false),
+
         backgroundColor: Color.fromARGB(255, 127, 91, 255),
         child: const Icon(Icons.add),
       ),
