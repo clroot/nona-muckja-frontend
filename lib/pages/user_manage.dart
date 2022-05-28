@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:nonamukja/widget/etc/clay_button.dart';
 import 'package:nonamukja/widget/auth/login_dialog.dart';
 import 'package:nonamukja/widget/auth/signin_dialog.dart';
-import 'package:nonamukja/blocs/sigin_bloc.dart';
+import 'package:nonamukja/blocs/auth/sigin_bloc.dart';
 import 'package:nonamukja/pages/navigation_controll.dart';
 
 class UserManagePage extends StatefulWidget {
@@ -15,7 +15,8 @@ class _UserManagePageState extends State<UserManagePage> {
   @override
   Widget build(BuildContext context) {
     Map<String, dynamic> _signinUserInfo;
-    String singinResualt;
+    Map<String, dynamic> _singinResult;
+    Map<String, dynamic> _loginResult;
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Color.fromARGB(255, 240, 245, 255),
@@ -48,12 +49,25 @@ class _UserManagePageState extends State<UserManagePage> {
                   Container(
                       padding: EdgeInsets.only(top: 30),
                       child: GestureDetector(
-                        onTap: () {
-                          showDialog(
+                        onTap: () async {
+                          _loginResult = await showDialog(
                               context: context,
                               builder: (BuildContext context) {
                                 return LoginDialog();
                               });
+                          if (_loginResult['statusCode'] == 200) {
+                            Navigator.pushAndRemoveUntil(
+                              context,
+                              MaterialPageRoute(
+                                builder: (BuildContext context) =>
+                                    ControllScreen(),
+                              ),
+                              (route) => false,
+                            );
+                          } else {
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                content: Text(_loginResult['message'])));
+                          }
                         },
                         child: ClayWhiteButton(
                             content: '로그인', width: 130, height: 40),
@@ -67,13 +81,10 @@ class _UserManagePageState extends State<UserManagePage> {
                             builder: (BuildContext context) {
                               return SigninDialog();
                             });
-                        singinResualt = await _userSinginBloc
+                        _singinResult = await _userSinginBloc
                             .requestUserSingin(_signinUserInfo);
                         ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text(singinResualt),
-                          ),
-                        );
+                            SnackBar(content: Text(_singinResult['message'])));
                       },
                       child: ClayPurpleButton(
                           content: '회원가입', width: 130, height: 40),
