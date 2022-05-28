@@ -20,20 +20,22 @@ class EtcCard extends StatelessWidget {
     return Container(
       width: MediaQuery.of(context).size.width * 0.9,
       decoration: BoxDecoration(
-          color: Color.fromARGB(255, 248, 252, 255),
+          color: Colors.white,
           borderRadius: BorderRadius.circular(20),
           boxShadow: [
             BoxShadow(
               color: Color.fromARGB(255, 188, 200, 218),
-              offset: Offset(0, 5),
-              blurRadius: 10,
+              offset: Offset(0, 3),
+              blurRadius: 4,
             )
           ]),
       child: ListTile(
+        iconColor: Color.fromARGB(255, 127, 91, 255),
         onTap: () =>
             pushNewScreen(context, screen: changePage, withNavBar: false),
         leading: Icon(this.icon),
-        title: Text(this.content),
+        title:
+            Text(this.content, style: TextStyle(fontFamily: 'MinSans-Medium')),
         trailing: const Icon(
           CupertinoIcons.chevron_forward,
           size: 15,

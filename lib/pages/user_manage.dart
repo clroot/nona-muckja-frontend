@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:nonamukja/resources/service/storage_service.dart';
 import 'package:nonamukja/widget/etc/clay_button.dart';
 import 'package:nonamukja/widget/auth/login_dialog.dart';
 import 'package:nonamukja/widget/auth/signin_dialog.dart';
 import 'package:nonamukja/blocs/auth/sigin_bloc.dart';
+import 'package:nonamukja/model/auth/user_accessToken.dart';
 import 'package:nonamukja/pages/navigation_controll.dart';
 
 class UserManagePage extends StatefulWidget {
@@ -12,6 +14,32 @@ class UserManagePage extends StatefulWidget {
 
 class _UserManagePageState extends State<UserManagePage> {
   UserSinginBloc _userSinginBloc = UserSinginBloc();
+  StorageService _storageService = StorageService();
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _asyncMethod();
+    });
+  }
+
+  _asyncMethod() async {
+    //read 함수를 통하여 key값에 맞는 정보를 불러오게 됩니다. 이때 불러오는 결과의 타입은 String 타입임을 기억해야 합니다.
+    //(데이터가 없을때는 null을 반환을 합니다.)
+    String? userInfo = await _storageService.readSecureData('token');
+
+    //user의 정보가 있다면 바로 로그아웃 페이지로 넝어가게 합니다.
+    if (userInfo != null) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (BuildContext context) => ControllScreen(),
+        ),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     Map<String, dynamic> _signinUserInfo;
@@ -56,6 +84,9 @@ class _UserManagePageState extends State<UserManagePage> {
                                 return LoginDialog();
                               });
                           if (_loginResult['statusCode'] == 200) {
+                            await _storageService.writeSecureData(
+                                UserAccessToken(
+                                    'token', _loginResult['accessToken']));
                             Navigator.pushAndRemoveUntil(
                               context,
                               MaterialPageRoute(
@@ -65,8 +96,13 @@ class _UserManagePageState extends State<UserManagePage> {
                               (route) => false,
                             );
                           } else {
-                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                                content: Text(_loginResult['message'])));
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  _loginResult['message'],
+                                ),
+                              ),
+                            );
                           }
                         },
                         child: ClayWhiteButton(

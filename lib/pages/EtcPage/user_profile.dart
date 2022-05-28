@@ -1,8 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:nonamukja/widget/etc/card.dart';
+import 'package:nonamukja/pages/EtcPage/AdditionPage/logout_page.dart';
 import 'package:nonamukja/pages/EtcPage/AdditionPage/regional_auth_page.dart';
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends StatefulWidget {
+  @override
+  State<ProfilePage> createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,13 +42,9 @@ class ProfilePage extends StatelessWidget {
                               content: '설정',
                               icon: Icons.settings),
                           EtcCard(
-                              changePage: RegionalAuth_Page(),
-                              content: '설정',
-                              icon: Icons.settings),
-                          EtcCard(
-                              changePage: RegionalAuth_Page(),
-                              content: '설정',
-                              icon: Icons.settings),
+                              changePage: LogOutPage(),
+                              content: '로그아웃',
+                              icon: Icons.logout_outlined),
                         ]))
               ],
             )),

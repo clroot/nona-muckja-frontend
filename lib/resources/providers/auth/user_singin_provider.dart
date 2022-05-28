@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:nonamukja/model/register_model.dart';
+import 'package:nonamukja/model/auth/register_model.dart';
 import 'package:http/http.dart' show Client;
 
 class UserSinginProvieder {
