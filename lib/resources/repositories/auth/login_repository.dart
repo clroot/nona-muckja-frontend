@@ -1,4 +1,4 @@
-import 'package:nonamukja/model/login_model.dart';
+import 'package:nonamukja/model/auth/login_model.dart';
 
 class UserLoginRepository {
   LoginModel setUserLoginRepository(String userName, String password) {

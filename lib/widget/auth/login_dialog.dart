@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:nonamukja/pages/navigation_controll.dart';
 import 'package:nonamukja/blocs/auth/login_bloc.dart';
-import 'package:nonamukja/resources/etc/user_info_validation.dart';
+import 'package:nonamukja/resources/service/user_info_validation.dart';
 import 'package:nonamukja/widget/etc/clay_button.dart';
 
 class LoginDialog extends StatefulWidget {
@@ -33,6 +32,15 @@ class _LoginDialogState extends State<LoginDialog> {
                     fontSize: 25,
                     fontFamily: 'MinSans-Medium',
                     fontWeight: FontWeight.bold),
+              ),
+              Padding(padding: EdgeInsets.only(top: 5)),
+              Text(
+                '노나먹자에서 노나먹어 보아요!',
+                style: TextStyle(
+                  fontSize: 15,
+                  fontFamily: 'MinSans-Medium',
+                  color: Colors.grey,
+                ),
               ),
               Container(
                 padding: EdgeInsets.only(top: 30),

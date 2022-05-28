@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nonamukja/widget/etc/clay_button.dart';
-import 'package:nonamukja/resources/etc/user_info_validation.dart';
+import 'package:nonamukja/resources/service/user_info_validation.dart';
 import 'package:nonamukja/widget/location/user_location_setting.dart';
 
 class SigninDialog extends StatelessWidget {
