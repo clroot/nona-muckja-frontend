@@ -27,6 +27,7 @@ class BuildCategorySelectPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.end,
           children: <Widget>[
+            CategoryContainer(title: '전체'),
             CategoryContainer(title: '일식'),
             CategoryContainer(title: '중식'),
             CategoryContainer(title: '치킨'),
@@ -61,7 +62,9 @@ class CategoryContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-
+      onTap: () {
+        Navigator.pop(context,this.title);
+      },
       title: Text(
         this.title,
         style: TextStyle(color: Colors.black),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nonamukja/pages/MainPage/main_page.dart';
 import 'package:nonamukja/pages/user_manage.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 

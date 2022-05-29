@@ -17,6 +17,8 @@ const List<int> _selectint = <int>[
   11
 ];
 
+String category = '전체';
+
 class PartySigninPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -79,6 +81,7 @@ class _BuildPartySigninPageState extends State<BuildPartySigninPage> {
             child: child,
           ),
         ));
+
   }
   @override
   Widget build(BuildContext context) {
@@ -150,7 +153,7 @@ class _BuildPartySigninPageState extends State<BuildPartySigninPage> {
                           ),
                     ),
 
-                    //Text('인원 수 : '+_selectint[_selectedint].toString()),
+
                     trailing: Icon(Icons.arrow_forward_ios),
                     onTap: () => _showDialog(
                       CupertinoPicker(
@@ -183,9 +186,23 @@ class _BuildPartySigninPageState extends State<BuildPartySigninPage> {
 
               child: Form(
                 child: ListTile(
-                  title: Text('카테고리 설정'),
+                  title: RichText(
+                    text: TextSpan(
+                      text: '카테고리 : ',
+                      style: DefaultTextStyle.of(context).style,
+                      children: <TextSpan>[
+                        TextSpan(
+                          text: category,
+                          style: TextStyle(color:Color.fromARGB(255, 127, 91, 255),
+                          )
+                        )
+                      ]
+                    ),
+                  ),
                   trailing: Icon(Icons.arrow_forward_ios),
-                  onTap: () => pushNewScreen(context, screen: CategorySelectPage(), withNavBar: false),
+                  onTap: () {
+                    _navigateAndDisplaySelection(context);
+                  },
 
                 ),
               ),
@@ -226,5 +243,20 @@ class _BuildPartySigninPageState extends State<BuildPartySigninPage> {
 
           ],
         );
+
+  }
+  _navigateAndDisplaySelection(BuildContext context) async {
+    // Navigator.push는 Future를 반환합니다. Future는 선택 창에서
+    // Navigator.pop이 호출된 이후 완료될 것입니다.
+    final result = await Navigator.push(
+      context,
+      // 다음 단계에서 SelectionScreen를 만들 것입니다.
+      MaterialPageRoute(builder: (context) => CategorySelectPage()),
+    );
+
+    setState(() {
+      category = result;
+    });
+
   }
 }
