@@ -18,8 +18,7 @@ class App extends StatelessWidget {
             .copyWith(primary: Color.fromARGB(255, 127, 91, 255)),
       ),
       debugShowCheckedModeBanner: false,
-      home: MainPage(),
-      //UserManagePage(),
+      home: UserManagePage(),
     );
   }
 }
