@@ -113,8 +113,8 @@ class PartyCard extends StatelessWidget {
   }
 }
 
-class PartyHIstoryCard extends StatelessWidget {
-  const PartyHIstoryCard({
+class PartyHistoryCard extends StatelessWidget {
+  const PartyHistoryCard({
     Key? key,
     required this.chatTitle,
   }) : super(key: key);
