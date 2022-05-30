@@ -1,4 +1,4 @@
-import 'package:nonamukja/resources/providers/location/user_location_provider.dart';
+import 'package:nonamukja/resources/providers/uesr/user_location_provider.dart';
 
 class UserLocationDetailRepo {
   final userLocationProvieder = UserLocationProvieder();

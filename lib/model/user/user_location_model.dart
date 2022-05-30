@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 class UserLocationModel {
   Meta? meta;
   List<Documents>? documents;
