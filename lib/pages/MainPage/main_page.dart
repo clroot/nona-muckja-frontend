@@ -10,6 +10,7 @@ import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    Map<String, dynamic> _partyInfo;
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(color: Color.fromARGB(255, 127, 91, 255)),
@@ -21,9 +22,9 @@ class MainPage extends StatelessWidget {
               children: [
                 Text("상도동",
                     style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Color.fromARGB(255, 127, 91, 255),
-                        )),
+                      fontWeight: FontWeight.bold,
+                      color: Color.fromARGB(255, 127, 91, 255),
+                    )),
                 Icon(Icons.keyboard_arrow_down),
               ],
             )),
@@ -87,9 +88,11 @@ class MainPage extends StatelessWidget {
         ])),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () =>
-          pushNewScreen(context, screen: PartySigninPage(), withNavBar: false),
-
+        onPressed: () async {
+          _partyInfo = await pushNewScreen(context,
+              screen: PartySigninPage(), withNavBar: false);
+          print(_partyInfo);
+        },
         backgroundColor: Color.fromARGB(255, 127, 91, 255),
         child: const Icon(Icons.add),
       ),

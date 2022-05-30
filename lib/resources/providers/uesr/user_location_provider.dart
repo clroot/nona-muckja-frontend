@@ -2,7 +2,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart' show Client;
 import 'dart:convert';
 import 'package:nonamukja/resources/repositories/location/user_location_repository.dart';
-import 'package:nonamukja/model/user_location_model.dart';
+import 'package:nonamukja/model/user/user_location_model.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class UserLocationProvieder {

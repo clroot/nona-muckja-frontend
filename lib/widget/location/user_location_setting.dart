@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nonamukja/blocs/user_location_bloc.dart';
+import 'package:nonamukja/blocs/user/user_location_bloc.dart';
 import 'package:nonamukja/widget/location/user_location_card.dart';
 import 'package:permission_handler/permission_handler.dart';
 

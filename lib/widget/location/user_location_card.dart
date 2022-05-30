@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 
-import 'package:nonamukja/model/user_location_model.dart';
+import 'package:nonamukja/model/user/user_location_model.dart';
 
 class UserLocationCard extends StatelessWidget {
   const UserLocationCard(
