@@ -4,7 +4,7 @@ import 'package:nonamukja/pages/MainPage/AppBarPage/alram_page.dart';
 import 'package:nonamukja/widget/etc/card.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
-class ChatPage extends StatelessWidget {
+class PartyHistoryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,7 +13,7 @@ class ChatPage extends StatelessWidget {
           elevation: 0,
           title: Container(
             padding: EdgeInsets.only(top:10),
-            child: Text('채팅',
+            child: Text('내 파티',
               style: TextStyle(
                   fontWeight: FontWeight.bold,
                   color: Colors.black,
@@ -37,15 +37,15 @@ class ChatPage extends StatelessWidget {
               child: Column(
             children: <Widget>[
               Divider(),
-              ChatCard(chatTitle: '디디치킨'),
+              PartyHIstoryCard(chatTitle: '디디치킨'),
               Divider(),
-              ChatCard(chatTitle: '대윤파닭'),
+              PartyHIstoryCard(chatTitle: '대윤파닭'),
               Divider(),
-              ChatCard(chatTitle: '엽기떡볶이'),
+              PartyHIstoryCard(chatTitle: '엽기떡볶이'),
               Divider(),
-              ChatCard(chatTitle: '롯데리아'),
+              PartyHIstoryCard(chatTitle: '롯데리아'),
               Divider(),
-              ChatCard(chatTitle: '맥도날드'),
+              PartyHIstoryCard(chatTitle: '맥도날드'),
               Divider(),
             ],
           )),

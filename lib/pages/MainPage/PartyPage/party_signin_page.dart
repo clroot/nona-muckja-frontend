@@ -16,8 +16,9 @@ const List<int> _selectint = <int>[
   10,
   11
 ];
-
 String category = '전체';
+TimeOfDay? time = const TimeOfDay(hour: 12, minute: 12);
+int _selectedint= 0;
 
 class PartySigninPage extends StatelessWidget {
   @override
@@ -61,8 +62,7 @@ class BuildPartySigninPage extends StatefulWidget {
 }
 
 class _BuildPartySigninPageState extends State<BuildPartySigninPage> {
-  TimeOfDay? time = const TimeOfDay(hour: 12, minute: 12);
-  int _selectedint= 0;
+
   void _showDialog(Widget child) {
     showCupertinoModalPopup<void>(
         context: context,
@@ -246,11 +246,10 @@ class _BuildPartySigninPageState extends State<BuildPartySigninPage> {
 
   }
   _navigateAndDisplaySelection(BuildContext context) async {
-    // Navigator.push는 Future를 반환합니다. Future는 선택 창에서
-    // Navigator.pop이 호출된 이후 완료될 것입니다.
+
     final result = await Navigator.push(
       context,
-      // 다음 단계에서 SelectionScreen를 만들 것입니다.
+
       MaterialPageRoute(builder: (context) => CategorySelectPage()),
     );
 

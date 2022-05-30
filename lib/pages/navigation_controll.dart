@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'package:nonamukja/pages/EtcPage/user_profile.dart';
-import 'package:nonamukja/pages/ChatPage/chat_page.dart';
+import 'package:nonamukja/pages/PartyHistoryPage/party_history_page.dart';
 import 'package:nonamukja/pages/MainPage/main_page.dart';
 
 PersistentTabController _controller = PersistentTabController(initialIndex: 0);
@@ -60,8 +60,8 @@ List<PersistentBottomNavBarItem> _navBarsItems() {
       inactiveColorPrimary: CupertinoColors.systemGrey,
     ),
     PersistentBottomNavBarItem(
-      icon: Icon(CupertinoIcons.chat_bubble_2),
-      title: ("채팅"),
+      icon: Icon(Icons.dining_outlined),
+      title: ("내 파티"),
       activeColorPrimary: Color.fromARGB(255, 127, 91, 255),
       inactiveColorPrimary: CupertinoColors.systemGrey,
     ),
@@ -75,7 +75,7 @@ List<PersistentBottomNavBarItem> _navBarsItems() {
 }
 
 List<Widget> _buildScreens() {
-  return [MainPage(), ChatPage(), ProfilePage()];
+  return [MainPage(), PartyHistoryPage(), ProfilePage()];
 }
 
 class ControllScreen extends StatelessWidget {
