@@ -52,6 +52,7 @@ class PartyCard extends StatelessWidget {
 
   final String partyTitle;
   final String partyLocation;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -112,13 +113,14 @@ class PartyCard extends StatelessWidget {
   }
 }
 
-class ChatCard extends StatelessWidget {
-  const ChatCard({
+class PartyHIstoryCard extends StatelessWidget {
+  const PartyHIstoryCard({
     Key? key,
     required this.chatTitle,
   }) : super(key: key);
 
   final String chatTitle;
+
   @override
   Widget build(BuildContext context) {
     return Container(
