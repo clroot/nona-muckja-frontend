@@ -1,57 +1,66 @@
 class UserInfo {
+  int? id;
+  String? username;
+  String? email;
   Address? address;
-  String? picture;
+  List<String>? roles;
 
-  UserInfo({this.address, this.picture});
+  UserInfo({this.id, this.username, this.email, this.address, this.roles});
 
   UserInfo.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    username = json['username'];
+    email = json['email'];
     address =
         json['address'] != null ? new Address.fromJson(json['address']) : null;
-    picture = json['picture'];
+    roles = json['roles'].cast<String>();
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id'] = this.id;
+    data['username'] = this.username;
+    data['email'] = this.email;
     if (this.address != null) {
       data['address'] = this.address!.toJson();
     }
-    data['picture'] = this.picture;
+    data['roles'] = this.roles;
     return data;
   }
 }
 
 class Address {
   String? address;
-  Coordinate? coordinate;
   String? roadAddress;
   String? zipCode;
+  Coordinate? coordinate;
 
-  Address({this.address, this.coordinate, this.roadAddress, this.zipCode});
+  Address({this.address, this.roadAddress, this.zipCode, this.coordinate});
 
   Address.fromJson(Map<String, dynamic> json) {
     address = json['address'];
+    roadAddress = json['roadAddress'];
+    zipCode = json['zipCode'];
     coordinate = json['coordinate'] != null
         ? new Coordinate.fromJson(json['coordinate'])
         : null;
-    roadAddress = json['roadAddress'];
-    zipCode = json['zipCode'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['address'] = this.address;
+    data['roadAddress'] = this.roadAddress;
+    data['zipCode'] = this.zipCode;
     if (this.coordinate != null) {
       data['coordinate'] = this.coordinate!.toJson();
     }
-    data['roadAddress'] = this.roadAddress;
-    data['zipCode'] = this.zipCode;
     return data;
   }
 }
 
 class Coordinate {
-  int? latitude;
-  int? longitude;
+  double? latitude;
+  double? longitude;
 
   Coordinate({this.latitude, this.longitude});
 

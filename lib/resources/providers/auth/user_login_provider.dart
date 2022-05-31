@@ -11,6 +11,7 @@ class UserSinginProvieder {
         Uri.parse("http://127.0.0.1:8080/api/v1/auth/login"),
         headers: {"Content-Type": "application/json"},
         body: jsonEncode(loginModel));
+
     if (response.statusCode == 200) {
       return {
         'statusCode': response.statusCode,
@@ -20,8 +21,10 @@ class UserSinginProvieder {
     } else {
       // 실패 메시지 출력
       final data = jsonDecode(response.body);
-      print(data);
-      return {'statusCode': response.statusCode, 'message': data['message']};
+      return {
+        'statusCode': response.statusCode,
+        'message': utf8.decode(data['message'])
+      };
     }
   }
 }
