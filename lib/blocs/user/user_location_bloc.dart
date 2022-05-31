@@ -5,7 +5,7 @@ import 'package:rxdart/rxdart.dart';
 
 class UserLocationBloC {
   final _userLocationRepo = UserLocationDetailRepo();
-  final _userLocationFetcher = BehaviorSubject<Map<String, dynamic>>();
+  final _userLocationFetcher = PublishSubject<Map<String, dynamic>>();
 
   Stream<Map<String, dynamic>> get userLocationList =>
       _userLocationFetcher.stream;
