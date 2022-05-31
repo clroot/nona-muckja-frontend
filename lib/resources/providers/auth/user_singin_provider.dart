@@ -18,7 +18,10 @@ class UserSinginProvieder {
       // 실패 메시지 출력
       final data = jsonDecode(response.body);
       print(data);
-      return {'statusCode': response.statusCode, 'message': data['message']};
+      return {
+        'statusCode': response.statusCode,
+        'message': utf8.decode(data['message'])
+      };
     }
   }
 }

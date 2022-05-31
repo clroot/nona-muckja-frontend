@@ -4,6 +4,5 @@ import 'package:nonamukja/resources/providers/uesr/user_info_provider.dart';
 class UserInfoRepository {
   final userInfoProvieder = UserInfoProvieder();
 
-  Future<UserInfo> fetchUserInfo(String token) =>
-      userInfoProvieder.userSinginProvider(token);
+  Future<UserInfo> fetchUserInfo() => userInfoProvieder.userInfoProvider();
 }
