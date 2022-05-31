@@ -1,7 +1,7 @@
 import 'package:nonamukja/model/party/party_create.dart';
 
 class PartyCreateRepository {
-  PartyCreate setUserRepository(Map<String, dynamic> partyInfo) {
+  PartyCreate setPartyRepository(Map<String, dynamic> partyInfo) {
     return PartyCreate.fromJson({
       'address': {
         'address': partyInfo['address'],

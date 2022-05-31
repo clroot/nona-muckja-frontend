@@ -4,8 +4,8 @@ import 'package:nonamukja/pages/MainPage/PartyPage/category_select.dart';
 
 List<int> _selectint = <int>[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 String category = '전체';
-TimeOfDay? time = const TimeOfDay(hour: 12, minute: 12);
 int _selectedint = 0;
+String partyDate = '';
 final TextEditingController _partyTitle = TextEditingController();
 final TextEditingController _partyLocation = TextEditingController();
 final TextEditingController _shopLink = TextEditingController();
@@ -41,9 +41,9 @@ class PartySigninPage extends StatelessWidget {
                   _partyInfo['partyTitle'] = _partyTitle.text;
                   _partyInfo['partyLocation'] = _partyLocation.text;
                   _partyInfo['shopLink'] = _shopLink.text;
-                  _partyInfo['partyTime'] = time;
+                  _partyInfo['partyTime'] = partyDate;
                   _partyInfo['category'] = category;
-                  _partyInfo['partyNum'] = _selectedint + 1;
+                  _partyInfo['limitMemberCount'] = _selectedint + 1;
                   Navigator.pop(context, _partyInfo);
                 },
               ),
@@ -82,6 +82,7 @@ class _BuildPartySigninPageState extends State<BuildPartySigninPage> {
 
   @override
   Widget build(BuildContext context) {
+    TimeOfDay? time = TimeOfDay(hour: 12, minute: 12);
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
@@ -192,7 +193,7 @@ class _BuildPartySigninPageState extends State<BuildPartySigninPage> {
                     children: <TextSpan>[
                       TextSpan(
                         text:
-                            '${time!.hour.toString()}:${time!.minute.toString()}',
+                            '${time.hour.toString()}:${time.minute.toString()}',
                         style: TextStyle(
                           color: Color.fromARGB(255, 127, 91, 255),
                         ),
@@ -201,13 +202,17 @@ class _BuildPartySigninPageState extends State<BuildPartySigninPage> {
               ),
               trailing: Icon(Icons.arrow_forward_ios),
               onTap: () async {
-                TimeOfDay? newTime =
-                    await showTimePicker(context: context, initialTime: time!);
-                if (newTime != null) {
+                await showTimePicker(context: context, initialTime: time!)
+                    .then((value) {
+                  time = value;
                   setState(() {
-                    time = newTime;
+                    time = time;
                   });
-                }
+                });
+                final now = new DateTime.now();
+                partyDate = new DateTime(
+                        now.year, now.month, now.day, time!.hour, time!.minute)
+                    .toIso8601String();
               },
             ),
           ),

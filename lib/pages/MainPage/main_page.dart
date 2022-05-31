@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:nonamukja/blocs/party/party_create_bloc.dart';
 import 'package:nonamukja/pages/MainPage/AppBarPage/alram_page.dart';
 import 'package:nonamukja/pages/MainPage/AppBarPage/category_page.dart';
 import 'package:nonamukja/pages/MainPage/AppBarPage/search_page.dart';
@@ -10,7 +11,10 @@ import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    PartyCreateBloc _partyCreateBloc = PartyCreateBloc();
     Map<String, dynamic> _partyInfo;
+    Map<String, dynamic> _partyResualt;
+
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(color: Color.fromARGB(255, 127, 91, 255)),
@@ -91,7 +95,13 @@ class MainPage extends StatelessWidget {
         onPressed: () async {
           _partyInfo = await pushNewScreen(context,
               screen: PartySigninPage(), withNavBar: false);
-          print(_partyInfo);
+
+          _partyResualt = await _partyCreateBloc.requestPartyCreate(_partyInfo);
+          if (_partyResualt['statusCode'] == 200) {
+            print('done');
+          } else {
+            print(_partyInfo['message']);
+          }
         },
         backgroundColor: Color.fromARGB(255, 127, 91, 255),
         child: const Icon(Icons.add),

@@ -9,14 +9,14 @@ class UserLocationProvieder {
   Client client = Client();
   UserLocationRepository userLocationRepository = UserLocationRepository();
 
-  String? _apikey = dotenv.env['KAKAO_REST_API'];
+  String? apikey = dotenv.env['KAKAO_REST_API'];
   Future<Map<String, dynamic>> zipCodeProvieder() async {
     Position position = await userLocationRepository.currentUserLocation();
 
     final response = await client.get(
         Uri.parse(
             "https://dapi.kakao.com/v2/local/geo/coord2address.json?x=${position.longitude}&y=${position.latitude}"),
-        headers: {'Authorization': 'KakaoAK ${_apikey}'});
+        headers: {'Authorization': 'KakaoAK ${apikey}'});
     if (response.statusCode == 200) {
       // 성공시 Address json 반환
       Map<String, dynamic> userLocation = {
