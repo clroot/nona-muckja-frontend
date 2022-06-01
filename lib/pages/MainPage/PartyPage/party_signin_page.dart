@@ -6,6 +6,7 @@ List<int> _selectint = <int>[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 String category = '전체';
 int _selectedint = 0;
 String partyDate = '';
+TimeOfDay? time = TimeOfDay.now();
 final TextEditingController _partyTitle = TextEditingController();
 final TextEditingController _partyLocation = TextEditingController();
 final TextEditingController _shopLink = TextEditingController();
@@ -82,7 +83,6 @@ class _BuildPartySigninPageState extends State<BuildPartySigninPage> {
 
   @override
   Widget build(BuildContext context) {
-    TimeOfDay? time = TimeOfDay(hour: 12, minute: 12);
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
@@ -193,7 +193,7 @@ class _BuildPartySigninPageState extends State<BuildPartySigninPage> {
                     children: <TextSpan>[
                       TextSpan(
                         text:
-                            '${time.hour.toString()}:${time.minute.toString()}',
+                            '${time!.hour.toString()}:${time!.minute.toString()}',
                         style: TextStyle(
                           color: Color.fromARGB(255, 127, 91, 255),
                         ),
@@ -202,15 +202,14 @@ class _BuildPartySigninPageState extends State<BuildPartySigninPage> {
               ),
               trailing: Icon(Icons.arrow_forward_ios),
               onTap: () async {
-                await showTimePicker(context: context, initialTime: time!)
-                    .then((value) {
-                  time = value;
-                  setState(() {
-                    time = time;
-                  });
+                TimeOfDay? setTime =
+                    await showTimePicker(context: context, initialTime: time!);
+                setState(() {
+                  time = setTime;
                 });
-                final now = new DateTime.now();
-                partyDate = new DateTime(
+
+                final now = DateTime.now();
+                partyDate = DateTime(
                         now.year, now.month, now.day, time!.hour, time!.minute)
                     .toIso8601String();
               },
