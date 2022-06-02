@@ -37,7 +37,12 @@ class BuildNotice extends StatelessWidget {
   }
 }
 
-class NoticeContainer extends StatelessWidget {
+class NoticeContainer extends StatefulWidget {
+  @override
+  State<NoticeContainer> createState() => _NoticeContainerState();
+}
+
+class _NoticeContainerState extends State<NoticeContainer> {
   TextStyle boldStyle =
       TextStyle(color: Colors.black, fontWeight: FontWeight.bold);
 

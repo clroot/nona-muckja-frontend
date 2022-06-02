@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nonamukja/pages/MainPage/AppBarPage/alram_page.dart';
 import 'package:nonamukja/widget/etc/card.dart';

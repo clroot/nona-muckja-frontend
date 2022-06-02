@@ -16,7 +16,7 @@ class UserLocationProvieder {
     final response = await client.get(
         Uri.parse(
             "https://dapi.kakao.com/v2/local/geo/coord2address.json?x=${position.longitude}&y=${position.latitude}"),
-        headers: {'Authorization': 'KakaoAK ${apikey}'});
+        headers: {'Authorization': 'KakaoAK $apikey'});
     if (response.statusCode == 200) {
       // 성공시 Address json 반환
       Map<String, dynamic> userLocation = {
