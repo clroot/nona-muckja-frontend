@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nonamukja/blocs/auth/sigin_bloc.dart';
 import 'package:nonamukja/model/auth/user_accessToken.dart';
-import 'package:nonamukja/pages/navigation_controll.dart';
+import 'package:nonamukja/pages/navigation_control.dart';
 import 'package:nonamukja/resources/service/storage_service.dart';
 import 'package:nonamukja/widget/auth/login_dialog.dart';
 import 'package:nonamukja/widget/auth/signin_dialog.dart';
@@ -35,7 +35,7 @@ class _UserManagePageState extends State<UserManagePage> {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (BuildContext context) => ControllScreen(),
+          builder: (BuildContext context) => ControlScreen(),
         ),
       );
     }
@@ -91,7 +91,7 @@ class _UserManagePageState extends State<UserManagePage> {
                               context,
                               MaterialPageRoute(
                                 builder: (BuildContext context) =>
-                                    ControllScreen(),
+                                    ControlScreen(),
                               ),
                               (route) => false,
                             );
