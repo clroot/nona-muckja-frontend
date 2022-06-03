@@ -63,7 +63,7 @@ packages:
       name: convert
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.0.1"
+    version: "3.0.2"
   crypto:
     dependency: transitive
     description:
@@ -310,6 +310,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.1"
+  kakaomap_webview:
+    dependency: "direct main"
+    description:
+      name: kakaomap_webview
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.6.0"
   matcher:
     dependency: transitive
     description:
@@ -491,7 +498,7 @@ packages:
       name: rxdart
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.27.3"
+    version: "0.27.4"
   shared_preferences:
     dependency: transitive
     description:
