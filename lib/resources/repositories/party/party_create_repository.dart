@@ -1,4 +1,4 @@
-import 'package:nonamukja/model/party/party_create.dart';
+import 'package:nonamukja/model/party/party_create_model.dart';
 
 class PartyCreateRepository {
   PartyCreate setPartyRepository(Map<String, dynamic> partyInfo) {

@@ -1,9 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:nonamukja/model/party/party_detail_model.dart';
+import 'package:nonamukja/resources/providers/party/party_join_provider.dart';
 
 class PartyJoinPage extends StatelessWidget {
+  const PartyJoinPage({
+    Key? key,
+    required this.partyDetailModel,
+  }) : super(key: key);
+
+  final PartyDetailModel partyDetailModel;
+
   @override
   Widget build(BuildContext context) {
-    Map<String, dynamic> _partyInfo = Map<String, dynamic>();
+    PartyJoinProvider _partyJoinProvider = PartyJoinProvider();
+    Map<String, dynamic> _partyJoinResualt;
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(color: Colors.black),
@@ -15,49 +25,54 @@ class PartyJoinPage extends StatelessWidget {
         ),
         backgroundColor: Colors.white,
       ),
-      body: BuildPartyJoinPage(),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: <Widget>[
+          Card(
+            child: ListTile(
+              leading:
+                  Icon(Icons.title, color: Color.fromARGB(255, 127, 91, 255)),
+              title: Text(partyDetailModel.title.toString()),
+            ),
+          ),
+          Card(
+            child: ListTile(
+              title: Text('매장링크'),
+            ),
+          ),
+          Card(
+            child: ListTile(
+              leading:
+                  Icon(Icons.person, color: Color.fromARGB(255, 127, 91, 255)),
+              title: Text(partyDetailModel.currentMemberCount.toString() +
+                  ' / ' +
+                  partyDetailModel.limitMemberCount.toString()),
+            ),
+          ),
+          Card(
+            child: ListTile(
+              leading: Icon(Icons.food_bank_rounded,
+                  size: 30, color: Color.fromARGB(255, 127, 91, 255)),
+              title: Text('카테고리'),
+            ),
+          ),
+          Card(
+            child: ListTile(
+              title: Text('모임 시간'),
+            ),
+          ),
+          // FloatingActionButton(onPressed: )
+        ],
+      ),
       floatingActionButton: FloatingActionButton(
-          onPressed: () {},
+          onPressed: () async {
+            _partyJoinResualt =
+                await _partyJoinProvider.partyJoinProvider(partyDetailModel.id);
+            Navigator.pop(context, _partyJoinResualt);
+          },
           backgroundColor: Color.fromARGB(255, 127, 91, 255),
           child: const Icon(Icons.check)),
-    );
-  }
-}
-
-class BuildPartyJoinPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.end,
-      children: <Widget>[
-        Card(
-          child: ListTile(
-            title: const Text('파티제목'),
-          ),
-        ),
-        Card(
-          child: ListTile(
-            title: const Text('매장링크'),
-          ),
-        ),
-        Card(
-          child: ListTile(
-            title: const Text('인원 수'),
-          ),
-        ),
-        Card(
-          child: ListTile(
-            title: const Text('카테고리'),
-          ),
-        ),
-        Card(
-          child: ListTile(
-            title: const Text('모임 시간'),
-          ),
-        ),
-        // FloatingActionButton(onPressed: )
-      ],
     );
   }
 }

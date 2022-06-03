@@ -51,6 +51,9 @@ class _MainPageState extends State<MainPage> {
           partyLocation: list[index].address!.roadAddress.toString(),
           partyTime: list[index].partyTime,
           category: list[index].foodCategory.toString(),
+          memberNum: list[index].members!.length,
+          limitMemberCount: list[index].limitMemberCount,
+          id: list[index].id,
         );
       },
     );
