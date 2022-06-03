@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nonamukja/pages/MainPage/PartyPage/category_select.dart';
-import 'package:nonamukja/pages/MainPage/PartyPage/kakao_map.dart';
+import 'package:nonamukja/pages/MainPage/PartyPage/party_coordinate_select.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
 List<int> _selectint = <int>[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
@@ -119,7 +119,7 @@ class _BuildPartySigninPageState extends State<BuildPartySigninPage> {
           child: Form(
             child: ListTile(
               title: Text("test"),
-              onTap: () => pushNewScreen(context, screen: KakaoMap()),
+              onTap: () => pushNewScreen(context, screen: PartyCoordinateSelect()),
             )
           ),
         ),

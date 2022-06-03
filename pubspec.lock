@@ -310,13 +310,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.1"
-  kakaomap_webview:
-    dependency: "direct main"
-    description:
-      name: kakaomap_webview
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.6.0"
   matcher:
     dependency: transitive
     description:
