@@ -8,7 +8,7 @@ class UserSinginProvieder {
 
   Future<Map<String, dynamic>> userLoginProvider(LoginModel loginModel) async {
     final response = await client.post(
-        Uri.parse("http://127.0.0.1:8080/api/v1/auth/login"),
+        Uri.parse("https://nona-muckja.clroot.io/api/v1/auth/login"),
         headers: {"Content-Type": "application/json"},
         body: jsonEncode(loginModel));
 

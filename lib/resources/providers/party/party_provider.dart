@@ -12,7 +12,7 @@ class PartyCreateProvieder {
       PartyCreate partyCreate) async {
     String? token = await storageService.readSecureData('token');
     final response =
-        await client.post(Uri.parse("http://127.0.0.1:8080/api/v1/party"),
+        await client.post(Uri.parse("https://nona-muckja.clroot.io/api/v1/party"),
             headers: {
               'Content-Type': 'application/json',
               'Accept': 'application/json',
