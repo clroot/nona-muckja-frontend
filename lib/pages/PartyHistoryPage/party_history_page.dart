@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nonamukja/pages/MainPage/AppBarPage/alram_page.dart';
-import 'package:nonamukja/widget/etc/card.dart';
+import 'package:nonamukja/widget/party/party_card.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
 class PartyHistoryPage extends StatelessWidget {
@@ -12,11 +12,12 @@ class PartyHistoryPage extends StatelessWidget {
           iconTheme: IconThemeData(color: Color.fromARGB(255, 127, 91, 255)),
           elevation: 0,
           title: Container(
-            padding: EdgeInsets.only(top:10),
-            child: Text('내 파티',
+            padding: EdgeInsets.only(top: 10),
+            child: Text(
+              '내 파티',
               style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
               ),
             ),
           ),
