@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:nonamukja/pages/navigation_controll.dart';
-import 'package:nonamukja/pages/user_manage.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:nonamukja/pages/user_manage.dart';
 
 Future main() async {
   await dotenv.load(fileName: ".env");

@@ -3,8 +3,8 @@ import 'package:nonamukja/widget/etc/clay_button.dart';
 import 'package:nonamukja/resources/service/user_info_validation.dart';
 import 'package:nonamukja/widget/location/user_location_setting.dart';
 
-class SigninDialog extends StatelessWidget {
-  const SigninDialog({Key? key}) : super(key: key);
+class SignInDialog extends StatelessWidget {
+  const SignInDialog({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
