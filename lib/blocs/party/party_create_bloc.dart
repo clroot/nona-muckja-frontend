@@ -1,5 +1,5 @@
 import 'package:nonamukja/resources/providers/party/party_provider.dart';
-import 'package:nonamukja/resources/repositories/party/party_repository.dart';
+import 'package:nonamukja/resources/repositories/party/party_create_repository.dart';
 
 class PartyCreateBloc {
   PartyCreateProvieder _partyCreateProvieder = PartyCreateProvieder();
