@@ -10,8 +10,9 @@ class UserInfoProvieder {
 
   Future<UserInfo> userInfoProvider() async {
     String? token = await storageService.readSecureData('token');
+
     final response = await client
-        .get(Uri.parse("http://127.0.0.1:8080/api/v1/user"), headers: {
+        .get(Uri.parse("https://nona-muckja.clroot.io/api/v1/user"), headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
       'Authorization': 'Bearer $token'
@@ -19,7 +20,7 @@ class UserInfoProvieder {
     if (response.statusCode == 200) {
       return UserInfo.fromJson(json.decode(utf8.decode(response.bodyBytes)));
     } else {
-      throw '유저 정보를 받아오지 못 하였습니다.';
+      throw token.toString();
     }
   }
 }
