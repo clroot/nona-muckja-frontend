@@ -1,6 +1,11 @@
-class UserAccessToken {
-  UserAccessToken(this.key, this.value);
+import 'dart:convert';
 
-  final String key;
-  final String value;
+class UserAccessToken {
+  UserAccessToken(String key, Object data) {
+    this.key = key;
+    this.data = jsonEncode(data);
+  }
+
+  late final String key;
+  late final String data;
 }

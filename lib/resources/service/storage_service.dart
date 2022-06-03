@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:nonamukja/model/auth/user_accessToken.dart';
 
@@ -5,13 +7,15 @@ class StorageService {
   final _secureStorage = const FlutterSecureStorage();
 
   Future<void> writeSecureData(UserAccessToken userAccessToken) async {
-    await _secureStorage.write(
-        key: userAccessToken.key, value: userAccessToken.value);
+    var key = userAccessToken.key;
+    var data = userAccessToken.data;
+    await _secureStorage.write(key: key, value: data);
   }
 
-  Future<String?> readSecureData(String key) async {
-    var readData = await _secureStorage.read(key: key);
-    return readData;
+  Future<Map<String, dynamic>> readSecureData(String key) async {
+    var payload = await _secureStorage.read(key: key);
+    Map<String, dynamic> resualt = jsonDecode(payload.toString());
+    return resualt;
   }
 
   Future<void> deleteSecureData(String key) async {
@@ -28,7 +32,7 @@ class StorageService {
     List<UserAccessToken> list =
         allData.entries.map((e) => UserAccessToken(e.key, e.value)).toList();
     list.forEach((element) {
-      print(element.key + " " + element.value);
+      print(element.key + " " + element.data);
     });
     return list;
   }

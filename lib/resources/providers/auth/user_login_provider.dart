@@ -15,6 +15,7 @@ class UserSinginProvieder {
     if (response.statusCode == 200) {
       return {
         'statusCode': response.statusCode,
+        'userId': jsonDecode(response.body)['userId'],
         'accessToken': jsonDecode(response.body)['accessToken'],
         'message': '로그인 성공!'
       };
