@@ -10,7 +10,9 @@ class PartyCreateProvieder {
 
   Future<Map<String, dynamic>> partyCreateProvieder(
       PartyCreate partyCreate) async {
-    String? token = await storageService.readSecureData('token');
+    Map<String, dynamic>? userInfo =
+        await storageService.readSecureData('token');
+    String? token = userInfo['accessToken'];
     final response =
         await client.post(Uri.parse("https://nona-muckja.clroot.io/api/v1/party"),
             headers: {
