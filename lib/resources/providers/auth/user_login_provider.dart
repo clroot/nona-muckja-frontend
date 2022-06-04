@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:nonamukja/model/auth/login_model.dart';
 import 'package:http/http.dart' show Client;
 
-class UserSinginProvieder {
+class UserSingInProvider {
   Client client = Client();
 
   Future<Map<String, dynamic>> userLoginProvider(LoginModel loginModel) async {

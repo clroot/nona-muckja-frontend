@@ -78,7 +78,7 @@ List<Widget> _buildScreens() {
   return [MainPage(), PartyHistoryPage(), ProfilePage()];
 }
 
-class ControllScreen extends StatelessWidget {
+class ControlScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

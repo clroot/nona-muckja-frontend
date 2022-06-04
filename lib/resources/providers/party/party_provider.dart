@@ -4,7 +4,7 @@ import 'dart:convert';
 
 import 'package:nonamukja/resources/service/storage_service.dart';
 
-class PartyCreateProvieder {
+class PartyCreateProvider {
   StorageService storageService = StorageService();
   Client client = Client();
 

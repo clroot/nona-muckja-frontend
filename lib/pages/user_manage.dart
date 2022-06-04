@@ -1,13 +1,11 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:nonamukja/resources/service/storage_service.dart';
-import 'package:nonamukja/widget/etc/clay_button.dart';
-import 'package:nonamukja/widget/auth/login_dialog.dart';
-import 'package:nonamukja/widget/auth/signin_dialog.dart';
 import 'package:nonamukja/blocs/auth/sigin_bloc.dart';
 import 'package:nonamukja/model/auth/user_accessToken.dart';
-import 'package:nonamukja/pages/navigation_controll.dart';
+import 'package:nonamukja/pages/navigation_control.dart';
+import 'package:nonamukja/resources/service/storage_service.dart';
+import 'package:nonamukja/widget/auth/login_dialog.dart';
+import 'package:nonamukja/widget/auth/signin_dialog.dart';
+import 'package:nonamukja/widget/etc/clay_button.dart';
 
 class UserManagePage extends StatefulWidget {
   @override
@@ -15,7 +13,7 @@ class UserManagePage extends StatefulWidget {
 }
 
 class _UserManagePageState extends State<UserManagePage> {
-  UserSinginBloc _userSinginBloc = UserSinginBloc();
+  UserSingInBloc _userSinginBloc = UserSingInBloc();
   StorageService _storageService = StorageService();
 
   @override
@@ -37,7 +35,7 @@ class _UserManagePageState extends State<UserManagePage> {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (BuildContext context) => ControllScreen(),
+          builder: (BuildContext context) => ControlScreen(),
         ),
       );
     }
@@ -93,7 +91,7 @@ class _UserManagePageState extends State<UserManagePage> {
                               context,
                               MaterialPageRoute(
                                 builder: (BuildContext context) =>
-                                    ControllScreen(),
+                                    ControlScreen(),
                               ),
                               (route) => false,
                             );
@@ -117,10 +115,10 @@ class _UserManagePageState extends State<UserManagePage> {
                         _signinUserInfo = await showDialog(
                             context: context,
                             builder: (BuildContext context) {
-                              return SigninDialog();
+                              return SignInDialog();
                             });
                         _singinResult = await _userSinginBloc
-                            .requestUserSingin(_signinUserInfo);
+                            .requestUserSingIn(_signinUserInfo);
                         ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(content: Text(_singinResult['message'])));
                       },
