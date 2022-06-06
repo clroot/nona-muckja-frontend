@@ -31,20 +31,21 @@ class KakaoMapView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-        key: mapWidgetKey,
-        height: height,
-        width: width,
-        child: WebView(
-          initialUrl: _getKakaoMapUrl(),
-          onWebViewCreated: mapController,
-          javascriptMode: JavascriptMode.unrestricted,
-          javascriptChannels: _getChannels,
-          gestureRecognizers: <Factory<OneSequenceGestureRecognizer>>[
-            Factory<OneSequenceGestureRecognizer>(
-              () => EagerGestureRecognizer(),
-            ),
-          ].toSet(),
-        ));
+      key: mapWidgetKey,
+      height: height,
+      width: width,
+      child: WebView(
+        initialUrl: _getKakaoMapUrl(),
+        onWebViewCreated: mapController,
+        javascriptMode: JavascriptMode.unrestricted,
+        javascriptChannels: _getChannels,
+        gestureRecognizers: <Factory<OneSequenceGestureRecognizer>>[
+          Factory<OneSequenceGestureRecognizer>(
+            () => EagerGestureRecognizer(),
+          ),
+        ].toSet(),
+      ),
+    );
   }
 
   Set<JavascriptChannel>? get _getChannels {
@@ -103,14 +104,14 @@ class KakaoMapView extends StatelessWidget {
     if (${onTapMarker == null}) {
       var onTapMarker = {
           postMessage: (payload) => {
-              console.log(payload);
+              console.log(payload.lat);
           }
       }
     }
     const infoWindowContent = `
 <div style="padding:5px; display: block">
     <span>현재 위치에서 파티를 생성하시겠습니까?</span>
-    <button onclick="onTapMarker.postMessage(coordinate)" style="display: inline">확인</button>
+    <button onclick="onTapMarker.postMessage(JSON.stringify(coordinate))" style="display: inline">확인</button>
     <br>
     <br>
 </div>

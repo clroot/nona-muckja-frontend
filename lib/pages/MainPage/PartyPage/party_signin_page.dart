@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:nonamukja/blocs/user_location_bloc.dart';
+import 'package:nonamukja/model/user/user_location_model.dart';
 import 'package:nonamukja/pages/MainPage/PartyPage/category_select.dart';
 import 'package:nonamukja/pages/MainPage/PartyPage/party_coordinate_select.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
@@ -65,41 +67,44 @@ class BuildPartySigninPage extends StatefulWidget {
 class _BuildPartySigninPageState extends State<BuildPartySigninPage> {
   void _showDialog(Widget child) {
     showCupertinoModalPopup<void>(
-        context: context,
-        builder: (BuildContext context) => Container(
-              height: 216,
-              padding: const EdgeInsets.only(top: 6.0),
-              // The Bottom margin is provided to align the popup above the system navigation bar.
-              margin: EdgeInsets.only(
-                bottom: MediaQuery.of(context).viewInsets.bottom,
-              ),
-              // Provide a background color for the popup.
-              color: CupertinoColors.systemBackground.resolveFrom(context),
-              // Use a SafeArea widget to avoid system overlaps.
-              child: SafeArea(
-                top: false,
-                child: child,
-              ),
-            ));
+      context: context,
+      builder: (BuildContext context) => Container(
+        height: 216,
+        padding: const EdgeInsets.only(top: 6.0),
+        // The Bottom margin is provided to align the popup above the system navigation bar.
+        margin: EdgeInsets.only(
+          bottom: MediaQuery.of(context).viewInsets.bottom,
+        ),
+        // Provide a background color for the popup.
+        color: CupertinoColors.systemBackground.resolveFrom(context),
+        // Use a SafeArea widget to avoid system overlaps.
+        child: SafeArea(
+          top: false,
+          child: child,
+        ),
+      ),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
+    SelectedLocationBloC _selectedLocationBloC = SelectedLocationBloC();
+    Map<String, dynamic> selectedLocation;
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
-        Container(
-          width: MediaQuery.of(context).size.width * 0.95,
-          child: Form(
-            child: TextField(
-              controller: _shopLink,
-              style: TextStyle(height: 2.5),
-              decoration: InputDecoration(
-                labelText: '매장 링크',
-              ),
-            ),
-          ),
-        ),
+        // Container(
+        //   width: MediaQuery.of(context).size.width * 0.95,
+        //   child: Form(
+        //     child: TextField(
+        //       controller: _shopLink,
+        //       style: TextStyle(height: 2.5),
+        //       decoration: InputDecoration(
+        //         labelText: '매장 링크',
+        //       ),
+        //     ),
+        //   ),
+        // ),
         Container(
           //padding: const EdgeInsets.only(top: 10,right: 5,left: 5,),
           width: MediaQuery.of(context).size.width * 0.95,
@@ -114,50 +119,93 @@ class _BuildPartySigninPageState extends State<BuildPartySigninPage> {
           ),
         ),
         Container(
-          //padding: const EdgeInsets.only(top: 10,right: 5,left: 5,),
-          width: MediaQuery.of(context).size.width * 0.95,
-          child: Form(
-            child: ListTile(
-              title: Text("test"),
-              onTap: () => pushNewScreen(context, screen: PartyCoordinateSelect()),
-            )
+          padding: const EdgeInsets.only(
+            top: 10,
+            right: 5,
+            left: 5,
           ),
+          width: MediaQuery.of(context).size.width * 0.95,
+          child: Card(
+            child: ListTile(
+              leading: Icon(Icons.location_on),
+              iconColor: Color.fromARGB(255, 127, 91, 255),
+              title: Text('위치 설정',
+                  style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                      fontFamily: 'MinSans-Medium')),
+              onTap: () async {
+                selectedLocation = await pushNewScreen(context,
+                    screen: PartyCoordinateSelect());
+                _selectedLocationBloC.fetchSelectedLocation(
+                    selectedLocation['lng'].toString(),
+                    selectedLocation['lat'].toString());
+              },
+            ),
+          ),
+        ),
+        StreamBuilder(
+          builder: ((context, AsyncSnapshot<UserLocationModel> snapshot) {
+            if (snapshot.hasData) {
+              return Container(
+                child: Card(
+                  child: ListTile(
+                    leading: Icon(Icons.location_on),
+                    iconColor: Color.fromARGB(255, 127, 91, 255),
+                    title: Text(
+                      snapshot.data!.documents!.first.address.toString(),
+                      style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
+                          fontFamily: 'MinSans-Medium'),
+                    ),
+                  ),
+                ),
+              );
+            } else if (snapshot.hasError) {
+              return Text(snapshot.error.toString());
+            } else {
+              return CircularProgressIndicator();
+            }
+          }),
+          stream: _selectedLocationBloC.selectedLocation,
         ),
         Container(
           child: Form(
             child: ListTile(
-                title: RichText(
-                  text: TextSpan(
-                      text: '인원 수 : ',
-                      style: DefaultTextStyle.of(context).style,
-                      children: <TextSpan>[
-                        TextSpan(
-                          text: _selectint[_selectedint].toString(),
-                          style: TextStyle(
-                            color: Color.fromARGB(255, 127, 91, 255),
-                          ),
-                        )
-                      ]),
-                ),
-                trailing: Icon(Icons.arrow_forward_ios),
-                onTap: () => _showDialog(
-                      CupertinoPicker(
-                        itemExtent: 25,
-                        onSelectedItemChanged: (int selectedItem) {
-                          setState(() {
-                            _selectedint = selectedItem;
-                          });
-                        },
-                        children: List<Widget>.generate(_selectint.length,
-                            (int index) {
-                          return Center(
-                            child: Text(
-                              _selectint[index].toString(),
-                            ),
-                          );
-                        }),
+              title: RichText(
+                text: TextSpan(
+                    text: '인원 수 : ',
+                    style: DefaultTextStyle.of(context).style,
+                    children: <TextSpan>[
+                      TextSpan(
+                        text: _selectint[_selectedint].toString(),
+                        style: TextStyle(
+                          color: Color.fromARGB(255, 127, 91, 255),
+                        ),
+                      )
+                    ]),
+              ),
+              trailing: Icon(Icons.arrow_forward_ios),
+              onTap: () => _showDialog(
+                CupertinoPicker(
+                  itemExtent: 25,
+                  onSelectedItemChanged: (int selectedItem) {
+                    setState(() {
+                      _selectedint = selectedItem;
+                    });
+                  },
+                  children:
+                      List<Widget>.generate(_selectint.length, (int index) {
+                    return Center(
+                      child: Text(
+                        _selectint[index].toString(),
                       ),
-                    )),
+                    );
+                  }),
+                ),
+              ),
+            ),
           ),
         ),
         Container(

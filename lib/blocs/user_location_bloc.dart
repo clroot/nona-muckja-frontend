@@ -1,6 +1,8 @@
 import 'dart:async';
 
+import 'package:nonamukja/model/user/user_location_model.dart';
 import 'package:nonamukja/resources/repositories/location/user_zipcode.dart';
+import 'package:nonamukja/resources/providers/uesr/user_location_provider.dart';
 import 'package:rxdart/rxdart.dart';
 
 class UserLocationBloC {
@@ -18,5 +20,23 @@ class UserLocationBloC {
 
   dispose() {
     _userLocationFetcher.close();
+  }
+}
+
+class SelectedLocationBloC {
+  final _selectedLocationProvider = UserLocationProvieder();
+  final _selectedLocationFetcher = BehaviorSubject<UserLocationModel>();
+
+  Stream<UserLocationModel> get selectedLocation =>
+      _selectedLocationFetcher.stream;
+
+  void fetchSelectedLocation(String lng, String lat) async {
+    UserLocationModel userLocationModel =
+        await _selectedLocationProvider.roadAddressProvieder(lng, lat);
+    _selectedLocationFetcher.sink.add(userLocationModel);
+  }
+
+  dispose() {
+    _selectedLocationFetcher.close();
   }
 }

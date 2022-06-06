@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:nonamukja/pages/MainPage/PartyPage/party_join_page.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
 //
