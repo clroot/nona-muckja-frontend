@@ -4,6 +4,8 @@ import 'package:nonamukja/model/party/party_detail_model.dart';
 import 'package:nonamukja/widget/party/party_detail.dart';
 import 'package:intl/intl.dart';
 
+import '../../resources/service/category_maping.dart';
+
 class PartyCard extends StatelessWidget {
   const PartyCard(
       {Key? key,
@@ -52,6 +54,7 @@ class PartyCard extends StatelessWidget {
               height: MediaQuery.of(context).size.height * 0.15,
               width: MediaQuery.of(context).size.width * 0.3,
               decoration: BoxDecoration(
+                image: DecorationImage(image: AssetImage(ImgMapping[category])),
                 color: Color.fromARGB(255, 228, 236, 251),
                 borderRadius: BorderRadius.circular(20),
               ),
@@ -102,7 +105,7 @@ class PartyCard extends StatelessWidget {
                     ),
                     Padding(padding: EdgeInsets.only(left: 3)),
                     Text(
-                      category,
+                      StringMapping[category],
                       style: TextStyle(
                           color: Colors.grey,
                           fontSize: 15,
