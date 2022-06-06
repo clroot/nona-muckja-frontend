@@ -37,17 +37,7 @@ class PartyHistoryPage extends StatelessWidget {
           child: SingleChildScrollView(
               child: Column(
             children: <Widget>[
-              Divider(),
-              PartyHistoryCard(chatTitle: '디디치킨'),
-              Divider(),
-              PartyHistoryCard(chatTitle: '대윤파닭'),
-              Divider(),
-              PartyHistoryCard(chatTitle: '엽기떡볶이'),
-              Divider(),
-              PartyHistoryCard(chatTitle: '롯데리아'),
-              Divider(),
-              PartyHistoryCard(chatTitle: '맥도날드'),
-              Divider(),
+              PartyHistoryCard(partyTitle: 'partyTitle', partyLocation: 'partyLocation', partyTime: '2000-02-13 12-12:00.000', category: 'category', limitMemberCount: 5, memberNum: 5, id: 1)
             ],
           )),
         ));
