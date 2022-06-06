@@ -155,24 +155,20 @@ class _BuildPartySigninPageState extends State<BuildPartySigninPage> {
           builder: ((context, AsyncSnapshot<UserLocationModel> snapshot) {
             if (snapshot.hasData) {
               return Container(
-                child: Card(
-                  child: ListTile(
-                    leading: Icon(Icons.location_on),
-                    iconColor: Color.fromARGB(255, 127, 91, 255),
-                    title: Text(
-                      snapshot.data!.documents!.first.address.toString(),
-                      style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500,
-                          fontFamily: 'MinSans-Medium'),
-                    ),
-                  ),
+                padding: EdgeInsets.only(top: 10),
+                child: Text(
+                  snapshot.data!.documents!.first.address!.addressName
+                      .toString(),
+                  style: TextStyle(
+                      color: Color.fromARGB(255, 127, 91, 255),
+                      fontSize: 14,
+                      fontFamily: 'MinSans-Medium'),
                 ),
               );
             } else if (snapshot.hasError) {
               return Text(snapshot.error.toString());
             } else {
-              return CircularProgressIndicator();
+              return Text('');
             }
           }),
           stream: _selectedLocationBloC.selectedLocation,

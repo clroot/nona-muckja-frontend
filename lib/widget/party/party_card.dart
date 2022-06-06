@@ -51,11 +51,11 @@ class PartyCard extends StatelessWidget {
           children: [
             Padding(padding: EdgeInsets.only(left: 20)),
             Container(
-
               height: MediaQuery.of(context).size.height * 0.15,
               width: MediaQuery.of(context).size.width * 0.3,
               decoration: BoxDecoration(
-                image: DecorationImage(image: AssetImage(ImgMapping[category]),fit: BoxFit.fill),
+                image: DecorationImage(
+                    image: AssetImage(ImgMapping[category]), fit: BoxFit.fill),
                 color: Color.fromARGB(255, 228, 236, 251),
                 borderRadius: BorderRadius.circular(20),
               ),
@@ -64,7 +64,6 @@ class PartyCard extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Padding(padding: EdgeInsets.only(top: 8)),
                 Text(
                   partyTitle,
                   style: TextStyle(
@@ -144,13 +143,13 @@ class PartyCard extends StatelessWidget {
 class PartyHistoryCard extends StatelessWidget {
   const PartyHistoryCard(
       {Key? key,
-        required this.partyTitle,
-        required this.partyLocation,
-        required this.partyTime,
-        required this.category,
-        required this.limitMemberCount,
-        required this.memberNum,
-        required this.id})
+      required this.partyTitle,
+      required this.partyLocation,
+      required this.partyTime,
+      required this.category,
+      required this.limitMemberCount,
+      required this.memberNum,
+      required this.id})
       : super(key: key);
   final String partyTitle;
   final String partyLocation;
@@ -159,8 +158,6 @@ class PartyHistoryCard extends StatelessWidget {
   final int? limitMemberCount;
   final int memberNum;
   final int? id;
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -176,7 +173,8 @@ class PartyHistoryCard extends StatelessWidget {
               width: 60,
               height: 60,
               decoration: BoxDecoration(
-                image: DecorationImage(image: AssetImage(ImgMapping[category]),fit: BoxFit.fill),
+                image: DecorationImage(
+                    image: AssetImage(ImgMapping[category]), fit: BoxFit.fill),
                 color: Color.fromARGB(255, 228, 236, 251),
                 borderRadius: BorderRadius.circular(20),
               ),
