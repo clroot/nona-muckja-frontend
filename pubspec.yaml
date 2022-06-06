@@ -62,6 +62,20 @@ flutter:
     - assets/images/logo.png
     - assets/images/profile.png
     - .env
+    - assets/images/ASIAN_FOOD.png
+    - assets/images/CHICKEN.png
+    - assets/images/CHINESE.png
+    - assets/images/DESSERT.png
+    - assets/images/FASTFOOD.png
+    - assets/images/JAPANESE.png
+    - assets/images/LUNCH_BOX.png
+    - assets/images/PIG_HOCKS.png
+    - assets/images/PIZZA.png
+    - assets/images/PORRIDGE.png
+    - assets/images/ROAST_FOOD.png
+    - assets/images/SCHOOL_FOOD.png
+    - assets/images/STEAM_DISH.png
+    - assets/images/WESTERN_FOOD.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 
