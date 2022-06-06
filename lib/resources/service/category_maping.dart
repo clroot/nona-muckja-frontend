@@ -1,20 +1,20 @@
-import 'package:flutter/material.dart';
+
 
 Map <String, dynamic> ImgMapping= {
-  'ASIAN_FOOD' : Image.asset('assets/images/ASIAN_FOOD.png'),
-  'CHICKEN' : Image.asset('assets/images/CHICKEN.png'),
-  'CHINESE' : Image.asset('assets/images/CHINESE.png'),
-  'DESSERT' : Image.asset('assets/images/DESSERT.png'),
-  'FASTFOOD' : Image.asset('assets/images/FASTFOOD.png'),
-  'JAPANESE' : Image.asset('assets/images/JAPANESE.png'),
-  'LUNCH_BOX' : Image.asset('assets/images/LUNCH_BOX.png'),
-  'PIG_HOCKS' : Image.asset('assets/images/PIG_HOCKS.png'),
-  'PIZZA' : Image.asset('assets/images/PIZZA.png'),
-  'PORRIDGE' : Image.asset('assets/images/PORRIDGE.png'),
-  'ROAST_FOOD' : Image.asset('assets/images/ROAST_FOOD.png'),
-  'SCHOOL_FOOD' : Image.asset('assets/images/SCHOOL_FOOD.png'),
-  'STEAM_DISH' : Image.asset('assets/images/STEAM_DISH.png'),
-  'WESTERN_FOOD' : Image.asset('assets/images/WESTERN_FOOD.png'),
+  'ASIAN_FOOD' : 'assets/images/ASIAN_FOOD.png',
+  'CHICKEN' : 'assets/images/CHICKEN.png',
+  'CHINESE' : 'assets/images/CHINESE.png',
+  'DESSERT' : 'assets/images/DESSERT.png',
+  'FASTFOOD' : 'assets/images/FASTFOOD.png',
+  'JAPANESE' : 'assets/images/JAPANESE.png',
+  'LUNCH_BOX' : 'assets/images/LUNCH_BOX.png',
+  'PIG_HOCKS' : 'assets/images/PIG_HOCKS.png',
+  'PIZZA' : 'assets/images/PIZZA.png',
+  'PORRIDGE' : 'assets/images/PORRIDGE.png',
+  'ROAST_FOOD' : 'assets/images/ROAST_FOOD.png',
+  'SCHOOL_FOOD' : 'assets/images/SCHOOL_FOOD.png',
+  'STEAM_DISH' : 'assets/images/STEAM_DISH.png',
+  'WESTERN_FOOD' : 'assets/images/WESTERN_FOOD.png',
 };
 
 Map <String, dynamic> StringMapping= {
