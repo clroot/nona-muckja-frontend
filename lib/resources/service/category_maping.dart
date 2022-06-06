@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 Map <String, dynamic> ImgMapping= {
   'ASIAN_FOOD' : Image.asset('assets/images/ASIAN_FOOD.png'),
-  'CHIKEN' : Image.asset('assets/images/CHICKEN.png'),
+  'CHICKEN' : Image.asset('assets/images/CHICKEN.png'),
   'CHINESE' : Image.asset('assets/images/CHINESE.png'),
   'DESSERT' : Image.asset('assets/images/DESSERT.png'),
   'FASTFOOD' : Image.asset('assets/images/FASTFOOD.png'),
