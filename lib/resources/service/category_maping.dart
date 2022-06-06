@@ -19,7 +19,7 @@ Map <String, dynamic> ImgMapping= {
 
 Map <String, dynamic> StringMapping= {
   'ASIAN_FOOD' : '아시안',
-  'CHIKEN' : '치킨',
+  'CHICKEN' : '치킨',
   'CHINESE' : '중식',
   'DESSERT' : '디저트',
   'FASTFOOD' : '패스트푸드',
