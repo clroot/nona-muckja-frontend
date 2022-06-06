@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nonamukja/blocs/party/party_detail_bloc.dart';
 import 'package:nonamukja/model/party/party_detail_model.dart';
-import 'package:nonamukja/pages/MainPage/PartyPage/party_join_page.dart';
-import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
+import 'package:nonamukja/widget/party/party_detail.dart';
 
 class PartyCard extends StatelessWidget {
   const PartyCard(
@@ -27,14 +26,19 @@ class PartyCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     PartyDetailBloc _partyDetailBloc = PartyDetailBloc();
-    PartyDetailModel _partyDetailModle = PartyDetailModel();
+    PartyDetailModel _partyDetailModel = PartyDetailModel();
 
     return GestureDetector(
       onTap: () async {
-        _partyDetailModle = await _partyDetailBloc.requestPartyDetail(id);
-        pushNewScreen(context,
-            screen: PartyJoinPage(partyDetailModel: _partyDetailModle),
-            withNavBar: false);
+        _partyDetailModel = await _partyDetailBloc.requestPartyDetail(id);
+        await showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return PartyDetailDialog(
+              partyDetailModel: _partyDetailModel,
+            );
+          },
+        );
       },
       child: Container(
         height: MediaQuery.of(context).size.height * 0.15,
@@ -54,7 +58,7 @@ class PartyCard extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Padding(padding: EdgeInsets.only(top: 8)),
+                // Padding(padding: EdgeInsets.only(top: 8)),
                 Text(
                   partyTitle,
                   style: TextStyle(
