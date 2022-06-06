@@ -9,22 +9,13 @@ import '../../../widget/map/kakaomap_webview.dart';
 
 String _apikey = dotenv.env['KAKAO_JS_API_KEY'].toString();
 
-class PartyCoordinateSelect extends StatefulWidget {
-  @override
-  State<PartyCoordinateSelect> createState() => _PartyCoordinateSelectState();
-}
+class PartyCoordinateSelect extends StatelessWidget {
+  const PartyCoordinateSelect({
+    Key? key,
+    required this.location,
+  }) : super(key: key);
 
-class _PartyCoordinateSelectState extends State<PartyCoordinateSelect> {
-  UserLocationRepository userLocationRepository = UserLocationRepository();
-  Position? location;
-
-  @override
-  void initState() {
-    super.initState();
-    userLocationRepository.currentUserLocation().then((value) {
-      location = value;
-    });
-  }
+  final Position? location;
 
   @override
   Widget build(BuildContext context) {

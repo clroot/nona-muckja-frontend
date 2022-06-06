@@ -1,10 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:nonamukja/blocs/user_location_bloc.dart';
 import 'package:nonamukja/model/user/user_location_model.dart';
 import 'package:nonamukja/pages/MainPage/PartyPage/category_select.dart';
 import 'package:nonamukja/pages/MainPage/PartyPage/party_coordinate_select.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
+import 'package:nonamukja/resources/repositories/location/user_location_repository.dart';
 
 List<int> _selectint = <int>[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 String category = '전체';
@@ -90,6 +92,7 @@ class _BuildPartySigninPageState extends State<BuildPartySigninPage> {
   Widget build(BuildContext context) {
     SelectedLocationBloC _selectedLocationBloC = SelectedLocationBloC();
     Map<String, dynamic> selectedLocation;
+    UserLocationRepository _userLocationRepository = UserLocationRepository();
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
@@ -135,8 +138,12 @@ class _BuildPartySigninPageState extends State<BuildPartySigninPage> {
                       fontWeight: FontWeight.w500,
                       fontFamily: 'MinSans-Medium')),
               onTap: () async {
+                Position location =
+                    await _userLocationRepository.currentUserLocation();
                 selectedLocation = await pushNewScreen(context,
-                    screen: PartyCoordinateSelect());
+                    screen: PartyCoordinateSelect(
+                      location: location,
+                    ));
                 _selectedLocationBloC.fetchSelectedLocation(
                     selectedLocation['lng'].toString(),
                     selectedLocation['lat'].toString());
