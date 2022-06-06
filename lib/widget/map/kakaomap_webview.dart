@@ -133,7 +133,6 @@ class KakaoMapView extends StatelessWidget {
 </html>
     '''
         .trim();
-
     return Uri.dataFromString(html,
             mimeType: 'text/html', encoding: Encoding.getByName('utf-8'))
         .toString();
