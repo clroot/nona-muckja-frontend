@@ -38,6 +38,7 @@ dependencies:
   permission_handler: ^9.2.0
   flutter_dotenv: ^5.0.2
   flutter_secure_storage: ^5.0.2
+  intl: ^0.17.0
 
 dev_dependencies:
   flutter_test:

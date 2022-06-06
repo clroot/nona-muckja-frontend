@@ -62,7 +62,7 @@ class Content {
   int? currentMemberCount;
   String? status;
   List<Members>? members;
-  DateTime? partyTime;
+  String? partyTime;
   String? title;
   String? description;
   String? foodCategory;
