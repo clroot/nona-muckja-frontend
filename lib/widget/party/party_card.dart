@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:nonamukja/blocs/party/party_detail_bloc.dart';
 import 'package:nonamukja/model/party/party_detail_model.dart';
 import 'package:nonamukja/widget/party/party_detail.dart';
+import 'package:intl/intl.dart';
 
 class PartyCard extends StatelessWidget {
   const PartyCard(
@@ -17,7 +18,7 @@ class PartyCard extends StatelessWidget {
 
   final String partyTitle;
   final String partyLocation;
-  final DateTime? partyTime;
+  final String? partyTime;
   final String category;
   final int? limitMemberCount;
   final int memberNum;
@@ -27,6 +28,7 @@ class PartyCard extends StatelessWidget {
   Widget build(BuildContext context) {
     PartyDetailBloc _partyDetailBloc = PartyDetailBloc();
     PartyDetailModel _partyDetailModel = PartyDetailModel();
+    String time = DateFormat.jm().format(DateTime.parse(partyTime.toString()));
 
     return GestureDetector(
       onTap: () async {
@@ -83,7 +85,7 @@ class PartyCard extends StatelessWidget {
                     ),
                     Padding(padding: EdgeInsets.only(left: 3)),
                     Text(
-                      '$partyTime.hour : $partyTime.minute',
+                      time,
                       style: TextStyle(
                           color: Colors.grey,
                           fontSize: 15,
