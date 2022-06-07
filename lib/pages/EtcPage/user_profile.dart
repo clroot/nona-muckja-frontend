@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:nonamukja/resources/providers/uesr/user_location_update_provider.dart';
+import 'package:nonamukja/resources/repositories/user/user_location_update_repository.dart';
 import 'package:nonamukja/widget/etc/card.dart';
 import 'package:nonamukja/pages/EtcPage/AdditionPage/logout_page.dart';
 import 'package:nonamukja/blocs/user/user_profile_bloc.dart';
@@ -15,7 +17,11 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePageState extends State<ProfilePage> {
   UserProfileBloC _userProfileBloC = UserProfileBloC();
+  UserLocationUpdateProvieder _userLocationProvieder =
+      UserLocationUpdateProvieder();
 
+  UserLocationUpdateRepository _userLocationRepository =
+      UserLocationUpdateRepository();
   @override
   void initState() {
     super.initState();
@@ -24,6 +30,8 @@ class _ProfilePageState extends State<ProfilePage> {
 
   @override
   Widget build(BuildContext context) {
+    Map<String, dynamic> _userLocation;
+    String resualt;
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
@@ -70,12 +78,19 @@ class _ProfilePageState extends State<ProfilePage> {
                                 ]),
                             child: ListTile(
                               iconColor: Color.fromARGB(255, 127, 91, 255),
-                              onTap: () {
-                                showDialog(
+                              onTap: () async {
+                                _userLocation = await showDialog(
                                     context: context,
                                     builder: (BuildContext context) {
                                       return UserLocationSetting();
                                     });
+                                resualt = await _userLocationProvieder
+                                    .userLocationUpdateProvider(
+                                        _userLocationRepository
+                                            .setUserLocationRepository(
+                                                _userLocation));
+                                print(resualt);
+                                setState(() {});
                               },
                               leading: Icon(Icons.location_on),
                               title: Text('내 동네',
