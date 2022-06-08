@@ -25,7 +25,6 @@ class _PartyHistoryPageState extends State<PartyHistoryPage> {
 
   Future<void> _onRefresh() async {
     _userPartyBloC.fetchPartyRefresh(0);
-    _userPartyBloC.fetchPartyRefresh(1);
   }
 
   buildView(BuildContext context, List<Content>? list) {
@@ -75,19 +74,21 @@ class _PartyHistoryPageState extends State<PartyHistoryPage> {
         ],
         backgroundColor: Colors.white,
       ),
-      body: RefreshIndicator(
-        onRefresh: _onRefresh,
-        child: StreamBuilder<List<Content>>(
-          stream: _userPartyBloC.userPartyList,
-          builder:
-              (BuildContext context, AsyncSnapshot<List<Content>> snapshot) {
-            if (!snapshot.hasData) {
-              return Center(
-                child: CircularProgressIndicator(),
-              );
-            }
-            return buildView(context, snapshot.data);
-          },
+      body: SingleChildScrollView(
+        child: RefreshIndicator(
+          onRefresh: _onRefresh,
+          child: StreamBuilder<List<Content>>(
+            stream: _userPartyBloC.userPartyList,
+            builder:
+                (BuildContext context, AsyncSnapshot<List<Content>> snapshot) {
+              if (!snapshot.hasData) {
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+              return buildView(context, snapshot.data);
+            },
+          ),
         ),
       ),
     );
