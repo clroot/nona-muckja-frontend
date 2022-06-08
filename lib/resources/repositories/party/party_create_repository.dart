@@ -9,6 +9,8 @@ class PartyCreateRepository {
         'zipCode': partyInfo['zipCode'],
         'coordinate': {'latitude': partyInfo['x'], 'longitude': partyInfo['y']},
       },
+      'title': partyInfo['title'],
+      'foodCategory': partyInfo['foodCategory'],
       'limitMemberCount': partyInfo['limitMemberCount'],
       'partyTime': partyInfo['partyTime']
     });

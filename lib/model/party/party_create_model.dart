@@ -1,15 +1,27 @@
 class PartyCreate {
   Address? address;
+  String? description;
+  String? foodCategory;
   int? limitMemberCount;
   String? partyTime;
+  String? title;
 
-  PartyCreate({this.address, this.limitMemberCount, this.partyTime});
+  PartyCreate(
+      {this.address,
+      this.description,
+      this.foodCategory,
+      this.limitMemberCount,
+      this.partyTime,
+      this.title});
 
   PartyCreate.fromJson(Map<String, dynamic> json) {
     address =
         json['address'] != null ? new Address.fromJson(json['address']) : null;
+    description = json['description'];
+    foodCategory = json['foodCategory'];
     limitMemberCount = json['limitMemberCount'];
     partyTime = json['partyTime'];
+    title = json['title'];
   }
 
   Map<String, dynamic> toJson() {
@@ -17,8 +29,11 @@ class PartyCreate {
     if (this.address != null) {
       data['address'] = this.address!.toJson();
     }
+    data['description'] = this.description;
+    data['foodCategory'] = this.foodCategory;
     data['limitMemberCount'] = this.limitMemberCount;
     data['partyTime'] = this.partyTime;
+    data['title'] = this.title;
     return data;
   }
 }
@@ -53,8 +68,8 @@ class Address {
 }
 
 class Coordinate {
-  int? latitude;
-  int? longitude;
+  double? latitude;
+  double? longitude;
 
   Coordinate({this.latitude, this.longitude});
 

@@ -7,12 +7,15 @@ import 'package:nonamukja/pages/MainPage/PartyPage/category_select.dart';
 import 'package:nonamukja/pages/MainPage/PartyPage/party_coordinate_select.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'package:nonamukja/resources/repositories/location/user_location_repository.dart';
+import 'package:nonamukja/resources/service/category_maping.dart';
 
+Map<String, dynamic> selectedLocation = {};
 List<int> _selectint = <int>[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
-String category = '전체';
+String category = '치킨';
 int _selectedint = 0;
 String partyDate = '';
 TimeOfDay? time = TimeOfDay.now();
+UserLocationModel _userLocationModel = UserLocationModel();
 final TextEditingController _partyTitle = TextEditingController();
 final TextEditingController _partyLocation = TextEditingController();
 final TextEditingController _shopLink = TextEditingController();
@@ -46,11 +49,20 @@ class PartySigninPage extends StatelessWidget {
                   ),
                 ),
                 onTap: () {
-                  _partyInfo['partyTitle'] = _partyTitle.text;
-                  _partyInfo['partyLocation'] = _partyLocation.text;
-                  _partyInfo['shopLink'] = _shopLink.text;
+                  _partyInfo['title'] = _partyTitle.text;
+                  _partyInfo['address'] = _userLocationModel
+                      .documents!.first.address!.addressName
+                      .toString();
+                  _partyInfo['roadAddress'] = _userLocationModel
+                      .documents!.first.roadAddress!.addressName
+                      .toString();
+                  _partyInfo['zipCode'] = _userLocationModel
+                      .documents!.first.roadAddress!.zoneNo
+                      .toString();
+                  _partyInfo['x'] = selectedLocation['lat'];
+                  _partyInfo['y'] = selectedLocation['lng'];
                   _partyInfo['partyTime'] = partyDate;
-                  _partyInfo['category'] = category;
+                  _partyInfo['foodCategory'] = MappingKorean[category];
                   _partyInfo['limitMemberCount'] = _selectedint + 1;
                   Navigator.pop(context, _partyInfo);
                 },
@@ -92,7 +104,6 @@ class _BuildPartySigninPageState extends State<BuildPartySigninPage> {
   @override
   Widget build(BuildContext context) {
     SelectedLocationBloC _selectedLocationBloC = SelectedLocationBloC();
-    Map<String, dynamic> selectedLocation;
     UserLocationRepository _userLocationRepository = UserLocationRepository();
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
@@ -133,9 +144,10 @@ class _BuildPartySigninPageState extends State<BuildPartySigninPage> {
                     screen: PartyCoordinateSelect(
                       location: location,
                     ));
-                _selectedLocationBloC.fetchSelectedLocation(
-                    selectedLocation['lng'].toString(),
-                    selectedLocation['lat'].toString());
+                _userLocationModel =
+                    await _selectedLocationBloC.fetchSelectedLocation(
+                        selectedLocation['lng'].toString(),
+                        selectedLocation['lat'].toString());
               },
             ),
           ),

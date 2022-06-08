@@ -25,6 +25,7 @@ class _PartyHistoryPageState extends State<PartyHistoryPage> {
 
   Future<void> _onRefresh() async {
     _userPartyBloC.fetchPartyRefresh(0);
+    _userPartyBloC.fetchPartyRefresh(1);
   }
 
   buildView(BuildContext context, List<Content>? list) {

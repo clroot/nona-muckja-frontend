@@ -30,10 +30,12 @@ class SelectedLocationBloC {
   Stream<UserLocationModel> get selectedLocation =>
       _selectedLocationFetcher.stream;
 
-  void fetchSelectedLocation(String lng, String lat) async {
+  Future<UserLocationModel> fetchSelectedLocation(
+      String lng, String lat) async {
     UserLocationModel userLocationModel =
         await _selectedLocationProvider.roadAddressProvieder(lng, lat);
     _selectedLocationFetcher.sink.add(userLocationModel);
+    return userLocationModel;
   }
 
   dispose() {
