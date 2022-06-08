@@ -18,6 +18,13 @@ class PartyListBloC {
     _partyListFetcher.sink.add(contentList!);
   }
 
+  void fetchPartyRefresh(int page) async {
+    contentList!.clear();
+    var tmp = await _partyListRepository.getPartyList(page);
+    contentList = [...?contentList, ...?tmp];
+    _partyListFetcher.sink.add(contentList!);
+  }
+
   dispose() {
     _partyListFetcher.close();
   }

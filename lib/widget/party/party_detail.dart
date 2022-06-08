@@ -78,6 +78,26 @@ class PartyDetailDialog extends StatelessWidget {
                 ],
               ),
               Padding(padding: EdgeInsets.only(top: 5)),
+              Container(
+                width: MediaQuery.of(context).size.width * 0.35,
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: partyDetailModel.currentMemberCount!.toInt(),
+                  itemBuilder: (BuildContext context, int index) {
+                    return Center(
+                      child: Text(
+                        partyDetailModel.members![index].username.toString(),
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 15,
+                          fontFamily: 'MinSans-Medium',
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ),
+              Padding(padding: EdgeInsets.only(top: 5)),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [

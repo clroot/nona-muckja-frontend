@@ -34,6 +34,10 @@ class _MainPageState extends State<MainPage> {
     });
   }
 
+  Future<void> _onRefresh() async {
+    _partyListBloC.fetchPartyRefresh(0);
+  }
+
   @override
   void dispose() {
     _scrollController.dispose();
@@ -94,7 +98,6 @@ class _MainPageState extends State<MainPage> {
             onPressed: () async {
               _category = await pushNewScreen(context,
                   screen: CategoryPage(), withNavBar: false);
-              print(_category);
               await pushNewScreen(context,
                   screen: PartySearchPage(
                     category: _category,
@@ -111,16 +114,20 @@ class _MainPageState extends State<MainPage> {
         ],
         backgroundColor: Colors.white,
       ),
-      body: StreamBuilder<List<Content>>(
-        stream: _partyListBloC.partyList,
-        builder: (BuildContext context, AsyncSnapshot<List<Content>> snapshot) {
-          if (!snapshot.hasData) {
-            return Center(
-              child: CircularProgressIndicator(),
-            );
-          }
-          return buildView(context, snapshot.data);
-        },
+      body: RefreshIndicator(
+        onRefresh: () => _onRefresh(),
+        child: StreamBuilder<List<Content>>(
+          stream: _partyListBloC.partyList,
+          builder:
+              (BuildContext context, AsyncSnapshot<List<Content>> snapshot) {
+            if (!snapshot.hasData) {
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+            return buildView(context, snapshot.data);
+          },
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
