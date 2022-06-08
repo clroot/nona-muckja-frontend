@@ -133,7 +133,7 @@ class _MainPageState extends State<MainPage> {
         onPressed: () async {
           _partyInfo = await pushNewScreen(context,
               screen: PartySigninPage(), withNavBar: false);
-
+          print(_partyInfo);
           _partyResualt = await _partyCreateBloc.requestPartyCreate(_partyInfo);
           if (_partyResualt['statusCode'] == 200) {
             print('done');
