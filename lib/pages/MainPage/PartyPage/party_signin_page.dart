@@ -22,6 +22,7 @@ class PartySigninPage extends StatelessWidget {
   Widget build(BuildContext context) {
     Map<String, dynamic> _partyInfo = Map<String, dynamic>();
     return Scaffold(
+        resizeToAvoidBottomInset: false,
         appBar: AppBar(
           iconTheme: IconThemeData(color: Colors.black),
           elevation: 0.0,

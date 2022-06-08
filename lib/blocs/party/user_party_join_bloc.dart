@@ -17,6 +17,13 @@ class UserPartyBloC {
     _userPartyFetcher.sink.add(contentList!);
   }
 
+  void fetchPartyRefresh(int page) async {
+    contentList!.clear();
+    var tmp = await _partyListRepository.getPartyList(page);
+    contentList = [...?contentList, ...?tmp];
+    _userPartyFetcher.sink.add(contentList!);
+  }
+
   dispose() {
     _userPartyFetcher.close();
   }

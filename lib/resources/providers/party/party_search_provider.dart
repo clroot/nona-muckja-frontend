@@ -24,7 +24,6 @@ class PartySearchProvider {
     );
 
     if (response.statusCode == 200) {
-      print(response.body);
       return PartyListModel.fromJson(
           json.decode(utf8.decode(response.bodyBytes)));
     } else {

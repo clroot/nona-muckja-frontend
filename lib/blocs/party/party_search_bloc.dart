@@ -16,9 +16,8 @@ class PartySearchBloC {
   List<Content>? contentList = [];
 
   void fetchPartyList(String category) async {
-    PartySearch partySearch =
-        await _partySearchRepository.getPartySearchList(category);
-    var tmp = await _partySearchProvider.partySearchProvider(partySearch);
+    var tmp = await _partySearchProvider.partySearchProvider(
+        await _partySearchRepository.getPartySearchList(category));
     contentList = [...?contentList, ...?tmp.content];
     _partySearchListFetcher.sink.add(contentList!);
   }
