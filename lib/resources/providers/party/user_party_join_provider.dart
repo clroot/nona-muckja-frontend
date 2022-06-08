@@ -8,13 +8,14 @@ class UserJoinPartyProvieder {
   Client client = Client();
   StorageService storageService = StorageService();
 
-  Future<PartyListModel> userJoinPartyProvieder(int id) async {
+  Future<PartyListModel> userJoinPartyProvieder() async {
     Map<String, dynamic> userInfo =
         await storageService.readSecureData('token');
     String? token = userInfo['accessToken'];
+    int? userId = userInfo['userId'];
 
     final response = await client.get(
-        Uri.parse("https://nona-muckja.clroot.io/api/v1/user/$id/party"),
+        Uri.parse("https://nona-muckja.clroot.io/api/v1/user/$userId/party"),
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json',
