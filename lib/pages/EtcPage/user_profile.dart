@@ -29,6 +29,12 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
   @override
+  void setState(fn) {
+    super.setState(fn);
+    _userProfileBloC.fetchUserInfo();
+  }
+
+  @override
   Widget build(BuildContext context) {
     Map<String, dynamic> _userLocation;
     String resualt;
@@ -89,7 +95,6 @@ class _ProfilePageState extends State<ProfilePage> {
                                         _userLocationRepository
                                             .setUserLocationRepository(
                                                 _userLocation));
-                                print(resualt);
                                 setState(() {});
                               },
                               leading: Icon(Icons.location_on),

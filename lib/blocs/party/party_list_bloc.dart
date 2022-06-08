@@ -9,6 +9,7 @@ class PartyListBloC {
   final _partyListFetcher = BehaviorSubject<List<Content>>();
 
   Stream<List<Content>> get partyList => _partyListFetcher.stream;
+
   List<Content>? contentList = [];
 
   void fetchPartyList(int page) async {

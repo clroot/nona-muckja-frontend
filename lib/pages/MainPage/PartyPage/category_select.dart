@@ -24,46 +24,41 @@ class BuildCategorySelectPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: <Widget>[
-            CategoryContainer(title: '전체'),
-            CategoryContainer(title: '일식'),
-            CategoryContainer(title: '중식'),
-            CategoryContainer(title: '치킨'),
-            CategoryContainer(title: '백반,죽'),
-            CategoryContainer(title: '디저트'),
-            CategoryContainer(title: '분식'),
-            CategoryContainer(title: '찜,탕,찌개'),
-            CategoryContainer(title: '피자'),
-            CategoryContainer(title: '양식'),
-            CategoryContainer(title: '고기구이'),
-            CategoryContainer(title: '족발,보쌈'),
-            CategoryContainer(title: '아시안'),
-            CategoryContainer(title: '패스트푸드'),
-            CategoryContainer(title: '도시락'),
-
-          ],
-        ));
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: <Widget>[
+        CategoryContainer(title: '일식'),
+        CategoryContainer(title: '중식'),
+        CategoryContainer(title: '치킨'),
+        CategoryContainer(title: '백반,죽'),
+        CategoryContainer(title: '디저트'),
+        CategoryContainer(title: '분식'),
+        CategoryContainer(title: '찜,탕,찌개'),
+        CategoryContainer(title: '피자'),
+        CategoryContainer(title: '양식'),
+        CategoryContainer(title: '고기구이'),
+        CategoryContainer(title: '족발,보쌈'),
+        CategoryContainer(title: '아시안'),
+        CategoryContainer(title: '패스트푸드'),
+        CategoryContainer(title: '도시락'),
+      ],
+    ));
   }
 }
 
 class CategoryContainer extends StatelessWidget {
-  const CategoryContainer(
-      {Key? key,
-
-        required this.title,
-      })
-      : super(key: key);
+  const CategoryContainer({
+    Key? key,
+    required this.title,
+  }) : super(key: key);
 
   final String title;
-
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
       onTap: () {
-        Navigator.pop(context,this.title);
+        Navigator.pop(context, this.title);
       },
       title: Text(
         this.title,

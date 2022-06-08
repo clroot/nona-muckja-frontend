@@ -96,18 +96,6 @@ class _BuildPartySigninPageState extends State<BuildPartySigninPage> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
-        // Container(
-        //   width: MediaQuery.of(context).size.width * 0.95,
-        //   child: Form(
-        //     child: TextField(
-        //       controller: _shopLink,
-        //       style: TextStyle(height: 2.5),
-        //       decoration: InputDecoration(
-        //         labelText: '매장 링크',
-        //       ),
-        //     ),
-        //   ),
-        // ),
         Container(
           //padding: const EdgeInsets.only(top: 10,right: 5,left: 5,),
           width: MediaQuery.of(context).size.width * 0.95,
