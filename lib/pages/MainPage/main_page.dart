@@ -4,7 +4,7 @@ import 'package:nonamukja/blocs/party/party_create_bloc.dart';
 import 'package:nonamukja/model/party/party_list_model.dart';
 import 'package:nonamukja/pages/MainPage/AppBarPage/alram_page.dart';
 import 'package:nonamukja/pages/MainPage/AppBarPage/category_page.dart';
-import 'package:nonamukja/pages/MainPage/AppBarPage/search_page.dart';
+import 'package:nonamukja/pages/MainPage/PartyPage/party_search_page.dart';
 import 'package:nonamukja/blocs/party/party_list_bloc.dart';
 import 'package:nonamukja/pages/MainPage/PartyPage/party_signin_page.dart';
 import 'package:nonamukja/widget/party/party_card.dart';
@@ -20,6 +20,7 @@ class _MainPageState extends State<MainPage> {
   final ScrollController _scrollController = ScrollController();
 
   int page = 0;
+
   @override
   void initState() {
     super.initState();
@@ -64,6 +65,7 @@ class _MainPageState extends State<MainPage> {
     PartyCreateBloc _partyCreateBloc = PartyCreateBloc();
     Map<String, dynamic> _partyInfo;
     Map<String, dynamic> _partyResualt;
+    String _category;
 
     return Scaffold(
       appBar: AppBar(
@@ -71,29 +73,34 @@ class _MainPageState extends State<MainPage> {
         elevation: 0.0,
         centerTitle: false,
         title: Container(
-            padding: EdgeInsets.only(top: 10),
-            child: Row(
-              children: [
-                Text("상도동",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Color.fromARGB(255, 127, 91, 255),
-                    )),
-                Icon(Icons.keyboard_arrow_down),
-              ],
-            )),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(CupertinoIcons.search),
-            padding: const EdgeInsets.only(right: 15),
-            onPressed: () =>
-                pushNewScreen(context, screen: SearchPage(), withNavBar: false),
+          padding: EdgeInsets.only(top: 10),
+          child: Row(
+            children: [
+              Text(
+                "상도동",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Color.fromARGB(255, 127, 91, 255),
+                ),
+              ),
+              Icon(Icons.keyboard_arrow_down),
+            ],
           ),
+        ),
+        actions: <Widget>[
           IconButton(
             icon: Icon(CupertinoIcons.list_bullet),
             padding: const EdgeInsets.only(right: 15),
-            onPressed: () => pushNewScreen(context,
-                screen: CategoryPage(), withNavBar: false),
+            onPressed: () async {
+              _category = await pushNewScreen(context,
+                  screen: CategoryPage(), withNavBar: false);
+              print(_category);
+              await pushNewScreen(context,
+                  screen: PartySearchPage(
+                    category: _category,
+                  ),
+                  withNavBar: false);
+            },
           ),
           IconButton(
             icon: Icon(CupertinoIcons.bell),

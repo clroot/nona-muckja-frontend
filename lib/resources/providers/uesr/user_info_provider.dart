@@ -24,7 +24,6 @@ class UserInfoProvieder {
         });
 
     if (response.statusCode == 200) {
-      client.close();
       return UserInfo.fromJson(json.decode(utf8.decode(response.bodyBytes)));
     } else {
       throw token.toString();
