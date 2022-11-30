@@ -1,11 +1,11 @@
 <center>
+
 <img src="./assets/images/logo.png" width="250px" height="250px"/>
 
 # :rice: 노나먹자
 </center>
 
 ## 노나먹자?
------
 
 최근 가파르게 상승한 배달비가 사회적 문제로 관심을 받고 있습니다.
 
@@ -17,7 +17,6 @@
 
 
 ## 기능 소개
--------------
 <center>
 
 ![](./assets/images/Simulator%20Screen%20Shot%20-%20iPhone%20SE%20(3rd%20generation)%20-%202022-06-23%20at%2010.41.13-side.png)
@@ -35,7 +34,6 @@
   - 카테고리
   - 파티 위치 설정
 ## 사용 기술
-------------
 ### Frontend
 - `dart`
 - `flutter`
