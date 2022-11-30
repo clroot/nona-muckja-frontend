@@ -1,9 +1,10 @@
-<center>
 
+<p align="middle">
 <img src="./assets/images/logo.png" width="250px" height="250px"/>
+</p>
 
-# :rice: 노나먹자
-</center>
+<h1 align="middle"> 노나먹자 </h1>
+
 
 ## 노나먹자?
 
