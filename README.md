@@ -16,24 +16,66 @@
 
 ## :blue_book: [프론트 개발후기](https://noisy-sulfur-8e8.notion.site/508dfc8f46a4462cb2c86afec797d4c5)
 
-
-## 기능 소개
 <center>
 
 ![](./assets/images/Simulator%20Screen%20Shot%20-%20iPhone%20SE%20(3rd%20generation)%20-%202022-06-23%20at%2010.41.13-side.png)
 
 </center>
 
-- 사용자
-  - 로그인, 회원가입
-  - 프로필
-  - 사용자 위치설정
-  - 참여중인 파티
-- 파티
-  - 생성, 참여, 삭제
-  - 파티 상세 정보
-  - 카테고리
-  - 파티 위치 설정
+# 구조
+
+```markdown
+├── lib
+│   ├── blocs
+│   │   ├── auth
+│   │   ├── party
+│   │   └── user
+│   ├── model
+│   │   ├── auth
+│   │   ├── party
+│   │   └── user
+│   ├── pages
+│   │   ├── EtcPage
+│   │   │   └── AdditionPage
+│   │   ├── MainPage
+│   │   │   ├── AppBarPage
+│   │   │   └── PartyPage
+│   │   └── PartyHistoryPage
+│   ├── resources
+│   │   ├── providers
+│   │   │   ├── auth
+│   │   │   ├── location
+│   │   │   ├── party
+│   │   │   └── uesr
+│   │   ├── repositories
+│   │   │   ├── auth
+│   │   │   ├── location
+│   │   │   ├── party
+│   │   │   └── user
+│   │   └── service
+│   └── widget
+│       ├── auth
+│       ├── etc
+│       ├── location
+│       ├── map
+│       └── party
+└── test
+```
+- BloCs
+    - 각 `UI` 객체가 구독하고 있는 `BloC`객체를 담은 곳 입니다.
+    - `BLoC` 객체는 `UI` 객체로 부터 이벤트를 전달받으면, `BLoC` 객체는 필요한 `Provider` 나 `Repository` 로 부터 데이터를 전달받아, `Bussiness Logic`을 처리합니다.
+- Model
+    - `Bussiness Logic` 의 데이터 객체를 담은 곳 입니다.
+- Pages
+    - 화면에 표시되는 `page` 를 담은 곳 입니다.
+- Resources
+    - providers
+        - 실제로 서버에 데이터를 제공하거나 서버로 부터 응답을 받아오는 로직을 처리합니다.
+        - 서버와의 통신을 담당합니다.
+    - repositories
+        - provider 가 사용해야 할 데이터를 제공하거나 제공된 데이터를 가공하여 가져옵니다.
+    - service
+        - `local storage` 기능, 카테고리 매핑, 정규식 등 기타 기능들을 담았습니다.
 ## 사용 기술
 ### Frontend
 - `dart`
