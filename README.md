@@ -14,7 +14,7 @@
 
 **‘노나먹자’는 이러한 소비자들에게 ‘공동 구매’모임을 만들고 참여함에 있어 애플리케이션을 통해 편리함을 제공하고자 하는 목적을 가지고 있습니다.**
 
-## :blue_book: [프론트 개발후기](https://noisy-sulfur-8e8.notion.site/508dfc8f46a4462cb2c86afec797d4c5)
+## :blue_book: [프론트 개발후기](https://noisy-sulfur-8e8.notion.site/32151032935644bc80e1c10ba675a608)
 
 <center>
 
